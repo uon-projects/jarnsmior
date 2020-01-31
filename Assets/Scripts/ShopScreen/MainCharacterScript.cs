@@ -18,8 +18,8 @@ public class MainCharacterScript : MonoBehaviour {
         targetPositionDoor.z = transform.position.z;
 
         GameObject table = GameObject.FindGameObjectWithTag("TableShop");
-        targetPositionTable.x = table.transform.position.x + door.GetComponent<SpriteRenderer>().bounds.size.x / 2 + GetComponent<SpriteRenderer>().bounds.size.x / 2 + 0.2f;
-        targetPositionTable.y = table.transform.position.y;
+        targetPositionTable.x = table.transform.position.x + table.GetComponent<SpriteRenderer>().bounds.size.x / 2 + GetComponent<SpriteRenderer>().bounds.size.x / 2 + 0.2f;
+        targetPositionTable.y = table.transform.position.y + table.GetComponent<SpriteRenderer>().bounds.size.y / 5;
         targetPositionTable.z = transform.position.z;
     }
 	
