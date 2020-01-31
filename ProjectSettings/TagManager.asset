@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - MainCharacterShop
+  - DoorShop
+  - TableShop
+  - NPCharacterShop
+  - TextHolderShop
+  - TextShop
   layers:
   - Default
   - TransparentFX

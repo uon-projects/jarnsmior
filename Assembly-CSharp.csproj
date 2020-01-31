@@ -61,6 +61,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\ShopScreen\DoorScript.cs" />
+    <Compile Include="Assets\Scripts\ShopScreen\MainCharacterScript.cs" />
+    <Compile Include="Assets\Scripts\ShopScreen\NPCharacterScript.cs" />
+    <Compile Include="Assets\Scripts\ShopScreen\TableScript.cs" />
+    <Compile Include="Assets\Scripts\ShopScreen\TextScript.cs" />
+    <Compile Include="Assets\Scripts\ShopScreen\TypeWritterEffect.cs" />
     <Compile Include="Assets\Scripts\TestScript.cs" />
     <Compile Include="Assets\Scripts\TestScript2.cs" />
     <Reference Include="UnityEditor.StandardEvents">
