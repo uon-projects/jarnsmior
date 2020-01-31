@@ -5,11 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MainCharacterScript : MonoBehaviour {
 
-    private int isMoving = 0, isZooming = 0;
+    private int isMoving = 0;
     private Vector3 targetPositionDoor, targetPositionTable;
     private int speed = 4;
     private float zoomScale;
     private GameObject cameraObj;
+    private bool enableMultiplePress = false;
 
     // Use this for initialization
     void Start ()
@@ -28,7 +29,7 @@ public class MainCharacterScript : MonoBehaviour {
         cameraObj = GameObject.FindGameObjectWithTag("MainCamera");
 
         transform.position = targetPositionDoor;
-        isMoving = isZooming = 2;
+        isMoving = 2;
         zoomScale = 3.04f;
         cameraObj.GetComponent<Camera>().orthographicSize = zoomScale;
     }
@@ -43,11 +44,11 @@ public class MainCharacterScript : MonoBehaviour {
 
     public void SetMove(int move)
     {
-        if (transform.position != targetPositionDoor && move == 1)
+        if (enableMultiplePress)
         {
             isMoving = move;
         }
-        else if (transform.position != targetPositionDoor && move == 2)
+        else if (isMoving == 0)
         {
             isMoving = move;
         }
@@ -57,22 +58,26 @@ public class MainCharacterScript : MonoBehaviour {
     {
         if (isMoving == 1)
         {
-            ZoomIn();
-            transform.position = Vector3.MoveTowards(transform.position, targetPositionDoor, speed * Time.deltaTime);
             if (transform.position == targetPositionDoor)
             {
                 isMoving = 0;
-                isZooming = 0;
+            }
+            else
+            {
+                transform.position = Vector3.MoveTowards(transform.position, targetPositionDoor, speed * Time.deltaTime);
+                ZoomIn();
             }
         }
         else if (isMoving == 2)
         {
-            ZoomOut();
-            transform.position = Vector3.MoveTowards(transform.position, targetPositionTable, speed * Time.deltaTime);
             if (transform.position == targetPositionTable)
             {
                 isMoving = 0;
-                isZooming = 0;
+            }
+            else
+            {
+                ZoomOut();
+                transform.position = Vector3.MoveTowards(transform.position, targetPositionTable, speed * Time.deltaTime);
             }
         }
     }
