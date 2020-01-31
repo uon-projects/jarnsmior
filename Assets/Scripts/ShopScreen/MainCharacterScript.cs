@@ -39,10 +39,6 @@ public class MainCharacterScript : MonoBehaviour {
         {
             Move();
         }
-        if(isZooming != 0)
-        {
-            Zoom();
-        }
     }
 
     public void SetMove(int move)
