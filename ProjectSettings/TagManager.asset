@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MainCharacterShop
   - DoorShop
+  - TableShop
   layers:
   - Default
   - TransparentFX
