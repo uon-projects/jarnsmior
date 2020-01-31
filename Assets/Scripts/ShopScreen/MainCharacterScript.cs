@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainCharacterScript : MonoBehaviour {
 
-    private bool isMoving = false;
+    private int isMoving = 0;
     private Vector3 targetPositionDoor, targetPositionTable;
     private int speed = 4;
 
@@ -25,7 +25,7 @@ public class MainCharacterScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(isMoving)
+		if(isMoving != 0)
         {
             Move();
         }
@@ -33,17 +33,28 @@ public class MainCharacterScript : MonoBehaviour {
 
     public void SetMove(int move)
     {
-        isMoving = true;
+        isMoving = move;
 
     }
 
     public void Move()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetPositionTable, speed * Time.deltaTime);
-        if(transform.position == targetPositionTable)
+        if (isMoving == 1)
         {
-            isMoving = false;
-            SceneManager.LoadScene("SmithyScene");
+            transform.position = Vector3.MoveTowards(transform.position, targetPositionDoor, speed * Time.deltaTime);
+            if (transform.position == targetPositionDoor)
+            {
+                isMoving = 0;
+                SceneManager.LoadScene("SmithyScene");
+            }
+        }
+        else if (isMoving == 2)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPositionTable, speed * Time.deltaTime);
+            if (transform.position == targetPositionTable)
+            {
+                isMoving = 0;
+            }
         }
     }
 
