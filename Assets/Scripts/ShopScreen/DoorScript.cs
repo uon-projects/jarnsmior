@@ -25,7 +25,7 @@ public class DoorScript : MonoBehaviour {
         Ray castPoint = Camera.main.ScreenPointToRay(mouse);
         if (mainCharacterScript != null)
         {
-            mainCharacterScript.SetMove(MOVE_FROM_DOOR);
+            mainCharacterScript.SetMove(1);
         }
     }
 
