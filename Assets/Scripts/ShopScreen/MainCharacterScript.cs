@@ -31,9 +31,9 @@ public class MainCharacterScript : MonoBehaviour {
         }
     }
 
-    public void SetMove(bool move)
+    public void SetMove(int move)
     {
-        isMoving = move;
+        isMoving = true;
 
     }
 
