@@ -8,7 +8,8 @@ public class MainCharacterScript : MonoBehaviour {
     private int isMoving = 0, isZooming = 0;
     private Vector3 targetPositionDoor, targetPositionTable;
     private int speed = 4;
-    private Camera camera;
+    private float zoomScale;
+    private GameObject cameraObj;
 
     // Use this for initialization
     void Start ()
@@ -18,11 +19,18 @@ public class MainCharacterScript : MonoBehaviour {
         targetPositionDoor.y = door.transform.position.y - door.GetComponent<SpriteRenderer>().bounds.size.y / 2 + GetComponent<SpriteRenderer>().bounds.size.y / 2 - 0.2f;
         targetPositionDoor.z = transform.position.z;
 
+
         GameObject table = GameObject.FindGameObjectWithTag("TableShop");
         targetPositionTable.x = table.transform.position.x + table.GetComponent<SpriteRenderer>().bounds.size.x / 2 + GetComponent<SpriteRenderer>().bounds.size.x / 2 + 0.2f;
         targetPositionTable.y = table.transform.position.y + table.GetComponent<SpriteRenderer>().bounds.size.y / 5;
         targetPositionTable.z = transform.position.z;
 
+        cameraObj = GameObject.FindGameObjectWithTag("MainCamera");
+
+        transform.position = targetPositionDoor;
+        isMoving = isZooming = 2;
+        zoomScale = 3.04f;
+        cameraObj.GetComponent<Camera>().orthographicSize = zoomScale;
     }
 	
 	// Update is called once per frame
@@ -47,15 +55,18 @@ public class MainCharacterScript : MonoBehaviour {
     {
         if (isMoving == 1)
         {
+            ZoomIn();
             transform.position = Vector3.MoveTowards(transform.position, targetPositionDoor, speed * Time.deltaTime);
             if (transform.position == targetPositionDoor)
             {
                 isMoving = 0;
                 isZooming = 1;
+                print(cameraObj.GetComponent<Camera>().orthographicSize);
             }
         }
         else if (isMoving == 2)
         {
+            ZoomOut();
             transform.position = Vector3.MoveTowards(transform.position, targetPositionTable, speed * Time.deltaTime);
             if (transform.position == targetPositionTable)
             {
@@ -64,10 +75,32 @@ public class MainCharacterScript : MonoBehaviour {
         }
     }
 
+    private void ZoomIn()
+    {
+        cameraObj.GetComponent<Camera>().orthographicSize -= 0.02f;
+        Vector3 cameraTarget;
+        cameraTarget.x = transform.position.x;
+        cameraTarget.y = transform.position.y;
+        cameraTarget.z = cameraObj.transform.position.z;
+        cameraObj.transform.position = Vector3.Lerp(cameraTarget, targetPositionTable, 0.02f);
+    }
+
+    private void ZoomOut()
+    {
+        cameraObj.GetComponent<Camera>().orthographicSize += 0.02f;
+        Vector3 cameraTarget;
+        cameraTarget.x = transform.position.x;
+        cameraTarget.y = transform.position.y;
+        cameraTarget.z = cameraObj.transform.position.z;
+        cameraObj.transform.position = Vector3.Lerp(cameraTarget, targetPositionTable, 0.02f);
+    }
+
     private void Zoom()
     {
-        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, 60, Time.deltaTime * 5);
+        //MoveCamera();
+        /*camera.transform.position
+        camera.transform.position.x = transform.position.x;
+        camera.orthographicSize = 2;*/
         //SceneManager.LoadScene("SmithyScene");
     }
 
