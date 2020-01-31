@@ -43,8 +43,14 @@ public class MainCharacterScript : MonoBehaviour {
 
     public void SetMove(int move)
     {
-        isMoving = move;
-
+        if (transform.position != targetPositionDoor && move == 1)
+        {
+            isMoving = move;
+        }
+        else if (transform.position != targetPositionDoor && move == 2)
+        {
+            isMoving = move;
+        }
     }
 
     public void Move()
@@ -56,8 +62,7 @@ public class MainCharacterScript : MonoBehaviour {
             if (transform.position == targetPositionDoor)
             {
                 isMoving = 0;
-                isZooming = 1;
-                print(cameraObj.GetComponent<Camera>().orthographicSize);
+                isZooming = 0;
             }
         }
         else if (isMoving == 2)
@@ -67,6 +72,7 @@ public class MainCharacterScript : MonoBehaviour {
             if (transform.position == targetPositionTable)
             {
                 isMoving = 0;
+                isZooming = 0;
             }
         }
     }
