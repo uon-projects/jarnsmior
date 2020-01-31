@@ -21,8 +21,6 @@ public class DoorScript : MonoBehaviour {
 
     void OnMouseDown()
     {
-        Vector3 mouse = Input.mousePosition;
-        Ray castPoint = Camera.main.ScreenPointToRay(mouse);
         if (mainCharacterScript != null)
         {
             mainCharacterScript.SetMove(1);
