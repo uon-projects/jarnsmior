@@ -14,7 +14,7 @@ public class MainCharacterScript : MonoBehaviour {
     private bool interactedWithCustomer = false;
     private bool cutomerComing = false;
     private float rangeWaiting;
-    
+
     public NPCharacterScript npCharacterScript;
 
     // Use this for initialization
@@ -90,7 +90,7 @@ public class MainCharacterScript : MonoBehaviour {
             if (transform.position == targetPositionTable)
             {
                 isMoving = 0;
-                if(!interactedWithCustomer)
+                if (!interactedWithCustomer)
                 {
                     interactedWithCustomer = true;
                     rangeWaiting = Random.Range(3, 6);
@@ -110,7 +110,7 @@ public class MainCharacterScript : MonoBehaviour {
         Vector3 cameraTarget;
         cameraTarget.x = transform.position.x;
         cameraTarget.y = transform.position.y;
-        cameraTarget.z = cameraObj.transform.position.z;
+        cameraTarget.z = -20;
         cameraObj.transform.position = Vector3.Lerp(cameraTarget, targetPositionTable, 0.02f);
     }
 
@@ -120,7 +120,7 @@ public class MainCharacterScript : MonoBehaviour {
         Vector3 cameraTarget;
         cameraTarget.x = transform.position.x;
         cameraTarget.y = transform.position.y;
-        cameraTarget.z = cameraObj.transform.position.z;
+        cameraTarget.z = -20;
         cameraObj.transform.position = Vector3.Lerp(cameraTarget, targetPositionTable, 0.02f);
     }
 
