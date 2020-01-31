@@ -8,9 +8,10 @@ public class MainCharacterScript : MonoBehaviour {
     private int isMoving = 0, isZooming = 0;
     private Vector3 targetPositionDoor, targetPositionTable;
     private int speed = 4;
+    private Camera camera;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         GameObject door = GameObject.FindGameObjectWithTag("DoorShop");
         targetPositionDoor.x = door.transform.position.x;
@@ -21,6 +22,7 @@ public class MainCharacterScript : MonoBehaviour {
         targetPositionTable.x = table.transform.position.x + table.GetComponent<SpriteRenderer>().bounds.size.x / 2 + GetComponent<SpriteRenderer>().bounds.size.x / 2 + 0.2f;
         targetPositionTable.y = table.transform.position.y + table.GetComponent<SpriteRenderer>().bounds.size.y / 5;
         targetPositionTable.z = transform.position.z;
+
     }
 	
 	// Update is called once per frame
@@ -64,9 +66,9 @@ public class MainCharacterScript : MonoBehaviour {
 
     private void Zoom()
     {
-        GetComponent<Camera>().fieldOfView = Mathf.Lerp(GetComponent<Camera>().fieldOfView, 60, Time.deltaTime * 5);
-        SceneManager.LoadScene("SmithyScene");
-
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, 60, Time.deltaTime * 5);
+        //SceneManager.LoadScene("SmithyScene");
     }
 
 }
