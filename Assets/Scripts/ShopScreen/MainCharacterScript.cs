@@ -11,10 +11,18 @@ public class MainCharacterScript : MonoBehaviour {
     private float zoomScale;
     private GameObject cameraObj;
     private bool enableMultiplePress = false;
+    private bool interactedWithCustomer = false;
+    private bool cutomerComing = false;
+    private float rangeWaiting;
+    
+    public NPCharacterScript npCharacterScript;
 
     // Use this for initialization
     void Start ()
     {
+        GameObject npCharacter = GameObject.FindGameObjectWithTag("NPCharacterShop");
+        npCharacterScript = (NPCharacterScript)npCharacter.GetComponent(typeof(NPCharacterScript));
+
         GameObject door = GameObject.FindGameObjectWithTag("DoorShop");
         targetPositionDoor.x = door.transform.position.x;
         targetPositionDoor.y = door.transform.position.y - door.GetComponent<SpriteRenderer>().bounds.size.y / 2 + GetComponent<SpriteRenderer>().bounds.size.y / 2 - 0.2f;
@@ -33,12 +41,21 @@ public class MainCharacterScript : MonoBehaviour {
         zoomScale = 3.04f;
         cameraObj.GetComponent<Camera>().orthographicSize = zoomScale;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 		if(isMoving != 0)
         {
             Move();
+        }
+        if(interactedWithCustomer && !cutomerComing)
+        {
+            rangeWaiting -= Time.deltaTime;
+            if (rangeWaiting < 0)
+            {
+                cutomerComing = true;
+                npCharacterScript.MoveToTableNPC();
+            }
         }
     }
 
@@ -73,6 +90,11 @@ public class MainCharacterScript : MonoBehaviour {
             if (transform.position == targetPositionTable)
             {
                 isMoving = 0;
+                if(!interactedWithCustomer)
+                {
+                    interactedWithCustomer = true;
+                    rangeWaiting = Random.Range(3, 6);
+                }
             }
             else
             {
