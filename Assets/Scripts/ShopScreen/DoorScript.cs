@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DoorScript : MonoBehaviour {
-
-    public GameObject mainCharacter;
+    
     public MainCharacterScript mainCharacterScript;
 
     // Use this for initialization
