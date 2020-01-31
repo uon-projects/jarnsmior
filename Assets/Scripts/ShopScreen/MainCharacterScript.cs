@@ -95,13 +95,4 @@ public class MainCharacterScript : MonoBehaviour {
         cameraObj.transform.position = Vector3.Lerp(cameraTarget, targetPositionTable, 0.02f);
     }
 
-    private void Zoom()
-    {
-        //MoveCamera();
-        /*camera.transform.position
-        camera.transform.position.x = transform.position.x;
-        camera.orthographicSize = 2;*/
-        //SceneManager.LoadScene("SmithyScene");
-    }
-
 }
