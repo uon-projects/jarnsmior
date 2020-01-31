@@ -5,12 +5,16 @@ using UnityEngine;
 public class DoorScript : MonoBehaviour {
     
     public MainCharacterScript mainCharacterScript;
+    public TextScript textScript;
 
     // Use this for initialization
     void Start ()
     {
         GameObject mainCharacter = GameObject.FindGameObjectWithTag("MainCharacterShop");
         mainCharacterScript = (MainCharacterScript)mainCharacter.GetComponent(typeof(MainCharacterScript));
+
+        GameObject textHolder = GameObject.FindGameObjectWithTag("TextHolderShop");
+        textScript = (TextScript)textHolder.GetComponent(typeof(TextScript));
     }
 	
 	// Update is called once per frame
@@ -20,9 +24,12 @@ public class DoorScript : MonoBehaviour {
 
     void OnMouseDown()
     {
-        if (mainCharacterScript != null)
+        if (mainCharacterScript != null && textScript != null)
         {
-            mainCharacterScript.SetMove(1);
+            if (!textScript.isVisible)
+            {
+                mainCharacterScript.SetMove(1);
+            }
         }
     }
 
