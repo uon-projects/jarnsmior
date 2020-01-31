@@ -8,6 +8,8 @@ TagManager:
   - DoorShop
   - TableShop
   - NPCharacterShop
+  - TextHolderShop
+  - TextShop
   layers:
   - Default
   - TransparentFX
