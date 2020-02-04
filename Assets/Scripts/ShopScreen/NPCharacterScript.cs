@@ -13,7 +13,8 @@ public class NPCharacterScript : MonoBehaviour {
     void Start () {
         Vector3 mPos = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
         mPos.z = transform.position.z;
-        mPos.x -= gameObject.GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        print(gameObject.GetComponent<SpriteRenderer>().bounds.size.x);
+        mPos.x = -15;
         mPos.y = transform.position.y;
         transform.position = mPos;
 
