@@ -21,7 +21,7 @@ public class MainCharacterScript : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        Animator mAnimator = gameObject.GetComponent<Animator>();
+        mAnimator = gameObject.GetComponent<Animator>();
 
         GameObject npCharacter = GameObject.FindGameObjectWithTag("NPCharacterShop");
         npCharacterScript = (NPCharacterScript)npCharacter.GetComponent(typeof(NPCharacterScript));
