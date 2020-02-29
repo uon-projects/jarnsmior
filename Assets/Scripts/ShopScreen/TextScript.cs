@@ -66,7 +66,10 @@ public class TextScript : MonoBehaviour {
                     typeWritterEffect.fullText = mTextChoice.text;
                     typeWritterEffect.startEffect = true;
                     typeWritterEffect.effectEnded = false;
-                    textToShow = mTextChoice.child[0];
+                    if (mTextChoice.child.Capacity == 1)
+                    {
+                        textToShow = mTextChoice.child[0];
+                    }
                     print(textToShow);
                 }
 
