@@ -59,25 +59,27 @@ public class TextScript : MonoBehaviour {
             if (typeWritterEffect.effectEnded && typeWritterEffect.fullText.Length == 0)
             {
                 TextChoice mTextChoiceP = getItemByID(textToShow);
-                if (mTextChoiceP.child.Capacity == 1 && !mTextChoiceP.choicePick)
+                if (mTextChoiceP.child.Capacity == 1 && mTextChoiceP.choice != -1)
                 {
-                    //choice options
-                    print("subchoice");
                     TextChoice mTextChoice = getItemByID(mTextChoiceP.child[0]);
-                    typeWritterEffect.fullText = mTextChoice.text;
-                    typeWritterEffect.startEffect = true;
-                    typeWritterEffect.effectEnded = false;
-                    textToShow = mTextChoice.id;
-                }
-                else if (mTextChoiceP.child.Capacity == 1)
-                {
-                    //simple conversation
-                    print("text");
-                    TextChoice mTextChoice = getItemByID(mTextChoiceP.child[0]);
-                    typeWritterEffect.fullText = mTextChoice.text;
-                    typeWritterEffect.startEffect = true;
-                    typeWritterEffect.effectEnded = false;
-                    textToShow = mTextChoice.id;
+                    if (mTextChoiceP.choice != -1)
+                    {
+                        //choice options
+                        print("subchoice");
+                        typeWritterEffect.fullText = mTextChoice.text;
+                        typeWritterEffect.startEffect = true;
+                        typeWritterEffect.effectEnded = false;
+                        textToShow = mTextChoice.id;
+                    }
+                    else
+                    {
+                        //simple conversation
+                        print("text");
+                        typeWritterEffect.fullText = mTextChoice.text;
+                        typeWritterEffect.startEffect = true;
+                        typeWritterEffect.effectEnded = false;
+                        textToShow = mTextChoice.id;
+                    }
                 }
                 else if (mTextChoiceP.child.Capacity == 3)
                 {
