@@ -56,6 +56,7 @@ public class TextScript : MonoBehaviour {
 	void Update () {
 		if(isVisible && !typeWritterEffect.startEffect)
         {
+            print(textValues.story_line[textToShow].text);
             typeWritterEffect.startEffect = true;
             typeWritterEffect.fullText = textValues.story_line[textToShow].text;
             print(textValues.story_line[textToShow].text);
