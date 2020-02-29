@@ -10,21 +10,29 @@ public class TypeWritterEffect : MonoBehaviour {
     private string currentText = "";
     public bool startEffect = false;
     private bool effectStarted = false;
+    public bool effectEnded = false;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(startEffect && !effectStarted)
+		if(startEffect && !effectStarted && !effectEnded)
         {
-            //StartCoroutine(ShowText());
+            this.GetComponent<Text>().text = "";
             ShowText();
+            effectEnded = false;
             effectStarted = true;
         }
-	}
+
+        if (fullText.Length == 0 && effectStarted)
+        {
+            effectStarted = false;
+            effectEnded = true;
+        }
+    }
 
     private float delayText = 0.05f;
     void ShowText()
