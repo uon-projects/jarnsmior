@@ -109,7 +109,6 @@ public class TextScript : MonoBehaviour {
                 i++;
             }
         }
-        print(i);
         return textValues.story_line[i];
     }
 
