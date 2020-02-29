@@ -59,19 +59,37 @@ public class TextScript : MonoBehaviour {
             if (typeWritterEffect.effectEnded && typeWritterEffect.fullText.Length == 0)
             {
                 TextChoice mTextChoiceP = getItemByID(textToShow);
-                if (mTextChoiceP.choice == -1 && mTextChoiceP.child.Capacity == 1)
+                if (mTextChoiceP.child.Capacity == 1 && !mTextChoiceP.choicePick)
                 {
-                    //simple conversation
-                    TextChoice mTextChoice = getItemByID(textValues.story_line[textToShow].child[0]);
+                    //choice options
+                    print("subchoice");
+                    TextChoice mTextChoice = getItemByID(mTextChoiceP.child[0]);
                     typeWritterEffect.fullText = mTextChoice.text;
                     typeWritterEffect.startEffect = true;
                     typeWritterEffect.effectEnded = false;
-                    if (mTextChoice.child.Capacity == 1)
-                    {
-                        textToShow = mTextChoice.child[0];
-                    }
-                    print(textToShow);
+                    textToShow = mTextChoice.id;
                 }
+                else if (mTextChoiceP.child.Capacity == 1)
+                {
+                    //simple conversation
+                    print("text");
+                    TextChoice mTextChoice = getItemByID(mTextChoiceP.child[0]);
+                    typeWritterEffect.fullText = mTextChoice.text;
+                    typeWritterEffect.startEffect = true;
+                    typeWritterEffect.effectEnded = false;
+                    textToShow = mTextChoice.id;
+                }
+                else if (mTextChoiceP.child.Capacity == 3)
+                {
+                    //choice options
+                    TextChoice mTextChoice1 = getItemByID(mTextChoiceP.child[0]);
+                    TextChoice mTextChoice2 = getItemByID(mTextChoiceP.child[1]);
+                    TextChoice mTextChoice3 = getItemByID(mTextChoiceP.child[2]);
+                    textToShow = mTextChoice2.id;
+                    print("choice 1: " + mTextChoice1.text);
+                    print("choice 2: " + mTextChoice2.text);
+                    print("choice 3: " + mTextChoice3.text);
+                } 
 
                 /*if (textValues.story_line[textToShow + 1].choice == -1 && textValues.story_line[textToShow + 1].child.Capacity == 1)
                 {
