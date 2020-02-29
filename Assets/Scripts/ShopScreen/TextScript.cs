@@ -58,14 +58,28 @@ public class TextScript : MonoBehaviour {
         {
             if (typeWritterEffect.effectEnded && typeWritterEffect.fullText.Length == 0)
             {
-                textToShow++;
                 typeWritterEffect.startEffect = true;
                 typeWritterEffect.effectEnded = false;
-                if (textValues.story_line.Capacity > textToShow)
+                if (textValues.story_line.Capacity > textToShow + 1)
                 {
-                    if (textValues.story_line[textToShow].choice == -1)
+                    if (textValues.story_line[textToShow + 1].choice == -1)
                     {
+                        textToShow++;
                         typeWritterEffect.fullText = textValues.story_line[textToShow].text;
+                    }
+                    else if (textValues.story_line[textToShow].choicePick)
+                    {
+                        print("choice 1: " + textValues.story_line[textToShow + 1].text);
+                        print("choice 2: " + textValues.story_line[textToShow + 2].text);
+                        print("choice 3: " + textValues.story_line[textToShow + 3].text);
+                        textToShow += 3;
+                    }
+                    else if (!textValues.story_line[textToShow].choicePick)
+                    {
+                        print("choice text 1: " + textValues.story_line[textToShow + 1].text);
+                        print("choice text 2: " + textValues.story_line[textToShow + 2].text);
+                        print("choice text 3: " + textValues.story_line[textToShow + 3].text);
+                        textToShow += 3;
                     }
                 }
             }
