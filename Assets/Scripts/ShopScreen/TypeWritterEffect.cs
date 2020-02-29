@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TypeWritterEffect : MonoBehaviour {
 
-    public float delay = 1.2f;
+    public float delay = 0.2f;
     public string fullText;
     private string currentText = "";
     public bool startEffect = false;
@@ -25,7 +25,7 @@ public class TypeWritterEffect : MonoBehaviour {
 
     IEnumerator ShowText()
     {
-        for(int i = 0; i <= fullText.Length; i++)
+        for(int i = 0; i < fullText.Length; i++)
         {
             currentText = fullText.Substring(0, i);
             this.GetComponent<Text>().text = currentText;
