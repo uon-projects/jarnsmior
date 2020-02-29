@@ -10,7 +10,7 @@ public class TextChoice
     public int id;
     public string text;
     public List<int> child;
-    public int choice;
+    public int choice = -1;
     public bool choicePick;
 }
 
@@ -63,7 +63,10 @@ public class TextScript : MonoBehaviour {
                 typeWritterEffect.effectEnded = false;
                 if (textValues.story_line.Capacity > textToShow)
                 {
-                    typeWritterEffect.fullText = textValues.story_line[textToShow].text;
+                    if (textValues.story_line[textToShow].choice == -1)
+                    {
+                        typeWritterEffect.fullText = textValues.story_line[textToShow].text;
+                    }
                 }
             }
         }
