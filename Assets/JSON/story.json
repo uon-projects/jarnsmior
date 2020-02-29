@@ -26,7 +26,7 @@
 		},
 		{
 			"id": 4,
-			"text": " No issue, I'm here to help.",
+			"text": "No issue, I'm here to help.",
 			"child": [7],
 			"choice": 3,
 			"choicePick": true
