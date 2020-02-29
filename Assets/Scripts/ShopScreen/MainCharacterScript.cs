@@ -93,7 +93,7 @@ public class MainCharacterScript : MonoBehaviour {
                 if (!interactedWithCustomer)
                 {
                     interactedWithCustomer = true;
-                    rangeWaiting = Random.Range(3, 6);
+                    rangeWaiting = Random.Range(2, 4);
                 }
             }
             else
