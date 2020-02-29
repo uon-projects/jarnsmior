@@ -59,13 +59,12 @@ public class TextScript : MonoBehaviour {
             if (typeWritterEffect.effectEnded && typeWritterEffect.fullText.Length == 0)
             {
                 TextChoice mTextChoiceP = getItemByID(textToShow);
-                if (mTextChoiceP.child.Capacity == 1 && mTextChoiceP.choice != -1)
+                if (mTextChoiceP.child.Capacity == 1)
                 {
                     TextChoice mTextChoice = getItemByID(mTextChoiceP.child[0]);
-                    if (mTextChoiceP.choice != -1)
+                    if (mTextChoice.choice != -1)
                     {
-                        //choice options
-                        print("subchoice");
+                        //text after choice
                         typeWritterEffect.fullText = mTextChoice.text;
                         typeWritterEffect.startEffect = true;
                         typeWritterEffect.effectEnded = false;
@@ -73,8 +72,7 @@ public class TextScript : MonoBehaviour {
                     }
                     else
                     {
-                        //simple conversation
-                        print("text");
+                        //conversation text
                         typeWritterEffect.fullText = mTextChoice.text;
                         typeWritterEffect.startEffect = true;
                         typeWritterEffect.effectEnded = false;
@@ -91,25 +89,7 @@ public class TextScript : MonoBehaviour {
                     print("choice 1: " + mTextChoice1.text);
                     print("choice 2: " + mTextChoice2.text);
                     print("choice 3: " + mTextChoice3.text);
-                } 
-
-                /*if (textValues.story_line[textToShow + 1].choice == -1 && textValues.story_line[textToShow + 1].child.Capacity == 1)
-                {
-                    typeWritterEffect.fullText = textValues.story_line[textToShow].text;
-                    textToShow = textValues.story_line[textToShow].child[0];
                 }
-                else if (textValues.story_line[textToShow].choicePick && textValues.story_line[textToShow].child.Capacity == 3)
-                {
-                    print("choice 1: " + textValues.story_line[textToShow + 1].text);
-                    print("choice 2: " + textValues.story_line[textToShow + 2].text);
-                    print("choice 3: " + textValues.story_line[textToShow + 3].text);
-                }
-                else if (!textValues.story_line[textToShow].choicePick)
-                {
-                    print("choice text 1: " + textValues.story_line[textToShow + 1].text);
-                    print("choice text 2: " + textValues.story_line[textToShow + 2].text);
-                    print("choice text 3: " + textValues.story_line[textToShow + 3].text);
-                }*/
             }
         }
     }
@@ -129,6 +109,7 @@ public class TextScript : MonoBehaviour {
                 i++;
             }
         }
+        print(i);
         return textValues.story_line[i];
     }
 
