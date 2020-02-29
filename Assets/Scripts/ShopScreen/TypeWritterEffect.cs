@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TypeWritterEffect : MonoBehaviour {
 
-    public float delay = 0.2f;
+    public float delay = 1.2f;
     public string fullText;
     private string currentText = "";
     public bool startEffect = false;
