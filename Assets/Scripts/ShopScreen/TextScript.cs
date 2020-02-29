@@ -51,15 +51,33 @@ public class TextScript : MonoBehaviour {
     {
         GetComponent<Renderer>().enabled = isVisible;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		if(isVisible && !typeWritterEffect.startEffect)
+
+    void OnMouseDown()
+    {
+        if (isVisible)
         {
-            print(textValues.story_line[textToShow].text);
-            typeWritterEffect.startEffect = true;
-            typeWritterEffect.fullText = textValues.story_line[textToShow].text;
-            print(textValues.story_line[textToShow].text);
+            if (typeWritterEffect.effectEnded && typeWritterEffect.fullText.Length == 0)
+            {
+                textToShow++;
+                typeWritterEffect.startEffect = true;
+                typeWritterEffect.effectEnded = false;
+                if (textValues.story_line.Capacity > textToShow)
+                {
+                    typeWritterEffect.fullText = textValues.story_line[textToShow].text;
+                }
+            }
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
+		if(isVisible)
+        {
+            if (!typeWritterEffect.startEffect)
+            {
+                typeWritterEffect.startEffect = true;
+                typeWritterEffect.fullText = textValues.story_line[textToShow].text;
+            }
         }
 	}
 
