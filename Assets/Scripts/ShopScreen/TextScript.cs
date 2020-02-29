@@ -60,30 +60,52 @@ public class TextScript : MonoBehaviour {
             {
                 typeWritterEffect.startEffect = true;
                 typeWritterEffect.effectEnded = false;
-                if (textValues.story_line.Capacity > textToShow + 1)
+                if(textValues.story_line[textToShow].choice == -1 && textValues.story_line[textToShow + 1].child.Capacity == 1)
                 {
-                    if (textValues.story_line[textToShow + 1].choice == -1)
-                    {
-                        textToShow++;
-                        typeWritterEffect.fullText = textValues.story_line[textToShow].text;
-                    }
-                    else if (textValues.story_line[textToShow].choicePick)
-                    {
-                        print("choice 1: " + textValues.story_line[textToShow + 1].text);
-                        print("choice 2: " + textValues.story_line[textToShow + 2].text);
-                        print("choice 3: " + textValues.story_line[textToShow + 3].text);
-                        textToShow += 3;
-                    }
-                    else if (!textValues.story_line[textToShow].choicePick)
-                    {
-                        print("choice text 1: " + textValues.story_line[textToShow + 1].text);
-                        print("choice text 2: " + textValues.story_line[textToShow + 2].text);
-                        print("choice text 3: " + textValues.story_line[textToShow + 3].text);
-                        textToShow += 3;
-                    }
+                    //simple conversation
+                    TextChoice mTextChoice = getItemByID(textValues.story_line[textToShow].child[0]);
+                    typeWritterEffect.fullText = mTextChoice.text;
+                    textToShow = mTextChoice.child[0];
                 }
+                print(getItemByID(textValues.story_line[textToShow].child[0]).text);
+
+                /*if (textValues.story_line[textToShow + 1].choice == -1 && textValues.story_line[textToShow + 1].child.Capacity == 1)
+                {
+                    typeWritterEffect.fullText = textValues.story_line[textToShow].text;
+                    textToShow = textValues.story_line[textToShow].child[0];
+                }
+                else if (textValues.story_line[textToShow].choicePick && textValues.story_line[textToShow].child.Capacity == 3)
+                {
+                    print("choice 1: " + textValues.story_line[textToShow + 1].text);
+                    print("choice 2: " + textValues.story_line[textToShow + 2].text);
+                    print("choice 3: " + textValues.story_line[textToShow + 3].text);
+                }
+                else if (!textValues.story_line[textToShow].choicePick)
+                {
+                    print("choice text 1: " + textValues.story_line[textToShow + 1].text);
+                    print("choice text 2: " + textValues.story_line[textToShow + 2].text);
+                    print("choice text 3: " + textValues.story_line[textToShow + 3].text);
+                }*/
             }
         }
+    }
+
+    TextChoice getItemByID(int id)
+    {
+        bool found = false;
+        int i = 0;
+        while(!found && i<textValues.story_line.Capacity)
+        {
+            if(textValues.story_line[i].id == id)
+            {
+                found = true;
+            }
+            else
+            {
+                i++;
+            }
+        }
+        return textValues.story_line[i];
     }
 
     // Update is called once per frame
