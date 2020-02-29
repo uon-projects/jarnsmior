@@ -8,11 +8,6 @@
 		{
 			"id": 1,
 			"text": "I've received a sudden request.",
-			"child": [2]
-		},
-		{
-			"id": 2,
-			"text": "text 3",
 			"child": [3, 4, 5]
 		},
 		{
