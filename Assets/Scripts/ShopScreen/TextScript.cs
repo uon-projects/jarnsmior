@@ -59,9 +59,6 @@ public class TextScript : MonoBehaviour {
             if (typeWritterEffect.effectEnded && typeWritterEffect.fullText.Length == 0)
             {
                 TextChoice mTextChoiceP = getItemByID(textToShow);
-                print(mTextChoiceP.text);
-                print(mTextChoiceP.choice);
-                print(mTextChoiceP.child);
                 if (mTextChoiceP.choice == -1 && mTextChoiceP.child.Capacity == 1)
                 {
                     //simple conversation
@@ -69,8 +66,8 @@ public class TextScript : MonoBehaviour {
                     typeWritterEffect.fullText = mTextChoice.text;
                     typeWritterEffect.startEffect = true;
                     typeWritterEffect.effectEnded = false;
-                    print(mTextChoice.text);
                     textToShow = mTextChoice.child[0];
+                    print(textToShow);
                 }
 
                 /*if (textValues.story_line[textToShow + 1].choice == -1 && textValues.story_line[textToShow + 1].child.Capacity == 1)
