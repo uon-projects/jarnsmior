@@ -10,7 +10,7 @@ public class TextChoice
     public int id;
     public string text;
     public List<int> child;
-    public int choice;
+    public int choice = -1;
     public bool choicePick;
 }
 
@@ -51,15 +51,76 @@ public class TextScript : MonoBehaviour {
     {
         GetComponent<Renderer>().enabled = isVisible;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		if(isVisible && !typeWritterEffect.startEffect)
+
+    void OnMouseDown()
+    {
+        if (isVisible)
         {
-            print(textValues.story_line[textToShow].text);
-            typeWritterEffect.startEffect = true;
-            typeWritterEffect.fullText = textValues.story_line[textToShow].text;
-            print(textValues.story_line[textToShow].text);
+            if (typeWritterEffect.effectEnded && typeWritterEffect.fullText.Length == 0)
+            {
+                TextChoice mTextChoiceP = getItemByID(textToShow);
+                if (mTextChoiceP.child.Capacity == 1)
+                {
+                    TextChoice mTextChoice = getItemByID(mTextChoiceP.child[0]);
+                    if (mTextChoice.choice != -1)
+                    {
+                        //text after choice
+                        typeWritterEffect.fullText = mTextChoice.text;
+                        typeWritterEffect.startEffect = true;
+                        typeWritterEffect.effectEnded = false;
+                        textToShow = mTextChoice.id;
+                    }
+                    else
+                    {
+                        //conversation text
+                        typeWritterEffect.fullText = mTextChoice.text;
+                        typeWritterEffect.startEffect = true;
+                        typeWritterEffect.effectEnded = false;
+                        textToShow = mTextChoice.id;
+                    }
+                }
+                else if (mTextChoiceP.child.Capacity == 3)
+                {
+                    //choice options
+                    TextChoice mTextChoice1 = getItemByID(mTextChoiceP.child[0]);
+                    TextChoice mTextChoice2 = getItemByID(mTextChoiceP.child[1]);
+                    TextChoice mTextChoice3 = getItemByID(mTextChoiceP.child[2]);
+                    textToShow = mTextChoice2.id;
+                    print("choice 1: " + mTextChoice1.text);
+                    print("choice 2: " + mTextChoice2.text);
+                    print("choice 3: " + mTextChoice3.text);
+                }
+            }
+        }
+    }
+
+    TextChoice getItemByID(int id)
+    {
+        bool found = false;
+        int i = 0;
+        while(!found && i<textValues.story_line.Capacity)
+        {
+            if(textValues.story_line[i].id == id)
+            {
+                found = true;
+            }
+            else
+            {
+                i++;
+            }
+        }
+        return textValues.story_line[i];
+    }
+
+    // Update is called once per frame
+    void Update () {
+		if(isVisible)
+        {
+            if (!typeWritterEffect.startEffect)
+            {
+                typeWritterEffect.startEffect = true;
+                typeWritterEffect.fullText = textValues.story_line[textToShow].text;
+            }
         }
 	}
 

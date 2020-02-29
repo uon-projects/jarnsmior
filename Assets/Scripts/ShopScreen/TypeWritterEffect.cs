@@ -5,31 +5,49 @@ using UnityEngine.UI;
 
 public class TypeWritterEffect : MonoBehaviour {
 
-    public float delay = 1.2f;
+    public float delay = 10f;
     public string fullText;
     private string currentText = "";
     public bool startEffect = false;
+    private bool effectStarted = false;
+    public bool effectEnded = false;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(startEffect)
+		if(startEffect && !effectStarted && !effectEnded)
         {
-            StartCoroutine(ShowText());
+            this.GetComponent<Text>().text = "";
+            ShowText();
+            effectEnded = false;
+            effectStarted = true;
         }
-	}
 
-    IEnumerator ShowText()
-    {
-        for(int i = 0; i <= fullText.Length; i++)
+        if (fullText.Length == 0 && effectStarted)
         {
-            currentText = fullText.Substring(0, i);
-            this.GetComponent<Text>().text = currentText;
-            yield return new WaitForSeconds(delay);
+            effectStarted = false;
+            effectEnded = true;
+        }
+    }
+
+    private float delayText = 0.05f;
+    void ShowText()
+    {
+        if (fullText.Length >= 1)
+        {
+            this.GetComponent<Text>().text += fullText.Substring(0, 1);
+        }
+        if (fullText.Length >= 1)
+        {
+            fullText = fullText.Substring(1, fullText.Length - 1);
+        }
+        if (fullText.Length >= 1)
+        {
+            Invoke("ShowText", delayText);
         }
     }
 
