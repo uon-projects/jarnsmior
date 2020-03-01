@@ -28,7 +28,7 @@ public class DoorSmithyScript : MonoBehaviour
         {
             
                 mainCharacterScript.SetMove(1);
-                mainCharacterScript.SetTarget(new Vector3(9.83f, -3.8f, 0));
+                mainCharacterScript.SetTarget(new Vector3(55f, 29.8f, 0));
         }
     }
 

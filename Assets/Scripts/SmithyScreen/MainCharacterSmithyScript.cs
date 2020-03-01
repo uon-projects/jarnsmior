@@ -50,11 +50,13 @@ public class MainCharacterSmithyScript : MonoBehaviour
         //targetPositionStairs.z = topStairs.transform.position.z;
         targetPositionStairs.z = transform.position.z;
 
+
         GameObject bottomStairs = GameObject.FindGameObjectWithTag("CameraMarker2");
         targetPositionLanding.x = bottomStairs.transform.position.x;
         targetPositionLanding.y = bottomStairs.transform.position.y;
         //targetPositionStairs.z = topStairs.transform.position.z;
         targetPositionLanding.z = transform.position.z;
+        print(targetPositionLanding);
 
         GameObject screenCenter = GameObject.FindGameObjectWithTag("ScreenCenter");
         camStart.x = screenCenter.transform.position.x;
@@ -156,20 +158,21 @@ public class MainCharacterSmithyScript : MonoBehaviour
             
             if (transform.position == charTarget)
             {
-
+                //print(charTarget);
                 if (transform.position == targetPositionDoor)
                 {
 
                     isMoving = 0;
 
                 }
-                else if (charTarget != targetPositionLanding)
+                else if (charTarget == targetPositionLanding)
+                {
+                    print("Working");
+                    charTarget = targetPositionStairs;
+                }
+                else if(charTarget == targetPositionStairs)
                 {
                     charTarget = targetPositionDoor;
-                }
-                else if(charTarget != targetPositionDoor)
-                {
-                    charTarget = targetPositionStairs;
                 }
                 
 
