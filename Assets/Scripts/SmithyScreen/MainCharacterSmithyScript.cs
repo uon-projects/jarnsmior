@@ -18,13 +18,14 @@ public class MainCharacterSmithyScript : MonoBehaviour
     private Animator mAnimator;
     bool cameraShouldZoomOut = false;
     bool cameraShouldZoomIn = false;
-    bool isSmithing = false;
+    bool isSmithing;
 
     float camSpeed;
 
     // Use this for initialization
     void Start()
     {
+        isSmithing = false;
         smithAnvil = GameObject.FindGameObjectWithTag("MainCharacterAnvil");
         smithAnvil.SetActive(false);
 
@@ -56,7 +57,7 @@ public class MainCharacterSmithyScript : MonoBehaviour
         targetPositionLanding.y = bottomStairs.transform.position.y;
         //targetPositionStairs.z = topStairs.transform.position.z;
         targetPositionLanding.z = transform.position.z;
-        print(targetPositionLanding);
+        //print(targetPositionLanding);
 
         GameObject screenCenter = GameObject.FindGameObjectWithTag("ScreenCenter");
         camStart.x = screenCenter.transform.position.x;
@@ -82,7 +83,7 @@ public class MainCharacterSmithyScript : MonoBehaviour
     void Update()
     {
 
-        
+        //print(cameraShouldZoomOut);
 
         if (isMoving != 0)
         {
@@ -103,32 +104,41 @@ public class MainCharacterSmithyScript : MonoBehaviour
         }
         if(cameraShouldZoomOut)
         {
-
-            if(gameCamera.orthographicSize <= 6)
+            print(gameCamera.orthographicSize);
+            //print("Working");
+            if (gameCamera.orthographicSize <= 6)
             {
-
+                
                 ZoomOut(camTarget);
-                cameraShouldZoomOut = false;
+                //print(camTarget);
 
             }
+            else
+            {
+                cameraShouldZoomOut = false;
+                //print(camTarget);
+            }
+
 
         }
-        if (cameraShouldZoomIn)
+        else if (cameraShouldZoomIn)
         {
-
+            print(gameCamera.orthographicSize);
             if (gameCamera.orthographicSize >= 2.5f)
             {
 
                 ZoomIn(camTarget);
-                cameraShouldZoomIn = false;
+                
 
             }
             else
             {
                 camTarget = camStart;
+                cameraShouldZoomIn = false;
             }
 
         }
+       
 
     }
 
@@ -168,7 +178,7 @@ public class MainCharacterSmithyScript : MonoBehaviour
                 }
                 else if (charTarget == targetPositionLanding)
                 {
-
+                    
                     charTarget = targetPositionStairs;
                 }
                 else if(charTarget == targetPositionStairs)
@@ -204,6 +214,7 @@ public class MainCharacterSmithyScript : MonoBehaviour
             }
             else
             {
+                camTarget = camStart;
                 cameraShouldZoomOut = true;
                 transform.position = Vector3.MoveTowards(transform.position, charTarget, speed * Time.deltaTime);
             }
@@ -239,7 +250,6 @@ public class MainCharacterSmithyScript : MonoBehaviour
         }
     }
 
-
     public void setIsSmithing(bool state)
     {
 
@@ -248,11 +258,9 @@ public class MainCharacterSmithyScript : MonoBehaviour
         cameraShouldZoomOut = true;
         //print(cameraShouldZoomOut);
         camTarget = camStart;
-        isMoving = 2;
         //print(camTarget);
 
     }
-
 
     private void ZoomIn(Vector3 target)
     {
@@ -266,17 +274,13 @@ public class MainCharacterSmithyScript : MonoBehaviour
 
     private void ZoomOut(Vector3 target)
     {
-
+        
         cameraObj.GetComponent<Camera>().orthographicSize += 0.02f;
         Vector3 cameraPosition;
         cameraPosition.x = cameraObj.transform.position.x;
         cameraPosition.y = cameraObj.transform.position.y;
-        cameraPosition.z = -10;
-
-        cameraObj.transform.position = Vector3.Lerp(cameraPosition, target, 0.01f);
-
+        cameraPosition.z = cameraObj.transform.position.z;
         cameraObj.transform.position = Vector3.Lerp(cameraPosition, camTarget, 0.01f);
-
     }
 
     

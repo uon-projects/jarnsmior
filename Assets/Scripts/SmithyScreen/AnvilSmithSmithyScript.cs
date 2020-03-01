@@ -6,11 +6,16 @@ public class AnvilSmithSmithyScript : MonoBehaviour {
 
 
     private Animator mAnimator;
+    public GameObject returnSmith;
+    private GameObject LengthenUI;
+    private MainCharacterSmithyScript mainCharacterScript;
 
     // Use this for initialization
     void Start ()
     {
         mAnimator = gameObject.GetComponent<Animator>();
+        LengthenUI = GameObject.FindGameObjectWithTag("LengthenUI");
+        
     }
 	
 	// Update is called once per frame
@@ -23,6 +28,18 @@ public class AnvilSmithSmithyScript : MonoBehaviour {
     {
 
         mAnimator.SetTrigger(animationToSet);
+
+    }
+
+    void OnMouseDown()
+    {
+
+        returnSmith.SetActive(true);
+        LengthenUI.SetActive(false);
+        mainCharacterScript = (MainCharacterSmithyScript)returnSmith.GetComponent(typeof(MainCharacterSmithyScript));
+        mainCharacterScript.setIsSmithing(false);
+        gameObject.SetActive(false);
+
 
     }
 }
