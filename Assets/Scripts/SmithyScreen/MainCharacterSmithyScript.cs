@@ -11,6 +11,7 @@ public class MainCharacterSmithyScript : MonoBehaviour
     private float zoomScale;
     private GameObject cameraObj;
     private GameObject smithAnvil;
+    private GameObject lengthenUI;
     private Camera gameCamera;
     private bool enableMultiplePress = false;
     private float rangeWaiting;
@@ -27,6 +28,9 @@ public class MainCharacterSmithyScript : MonoBehaviour
         smithAnvil = GameObject.FindGameObjectWithTag("MainCharacterAnvil");
         smithAnvil.SetActive(false);
 
+        lengthenUI = GameObject.FindGameObjectWithTag("LengthenUI");
+        lengthenUI.SetActive(false);
+
         mAnimator = gameObject.GetComponent<Animator>();
 
         GameObject door = GameObject.FindGameObjectWithTag("DoorShop");
@@ -37,7 +41,7 @@ public class MainCharacterSmithyScript : MonoBehaviour
 
         GameObject anvil = GameObject.FindGameObjectWithTag("Anvil");
         targetPositionAnvil.x = anvil.transform.position.x;
-        targetPositionAnvil.y = -3.8f;
+        targetPositionAnvil.y = 29.44f;
         targetPositionAnvil.z = transform.position.z;
 
         GameObject topStairs = GameObject.FindGameObjectWithTag("CameraMarker1");
@@ -85,10 +89,9 @@ public class MainCharacterSmithyScript : MonoBehaviour
             
         }
         else if (isSmithing)
-        {
-            print("works");
-            
+        {          
             smithAnvil.SetActive(true);
+            lengthenUI.SetActive(true);
             gameObject.SetActive(false);
 
         }
@@ -204,7 +207,7 @@ public class MainCharacterSmithyScript : MonoBehaviour
         else if(isMoving == 3)
         {
 
-            if (transform.position == targetPositionAnvil)
+            if (transform.position.x <= targetPositionAnvil.x)
             {
                 isMoving = 0;
                 isSmithing = true;
@@ -251,4 +254,6 @@ public class MainCharacterSmithyScript : MonoBehaviour
         cameraPosition.z = -10;
         cameraObj.transform.position = Vector3.Lerp(cameraPosition, target, 0.01f);
     }
+
+    
 }

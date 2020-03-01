@@ -28,7 +28,7 @@ public class AnvilSmithyScript : MonoBehaviour
         {
 
             mainCharacterScript.SetMove(3);
-            mainCharacterScript.SetTarget(new Vector3(-6.2f, -3.8f, 0));
+            mainCharacterScript.SetTarget(new Vector3(39.3f, 29.80f, 0));
 
         }
     }
