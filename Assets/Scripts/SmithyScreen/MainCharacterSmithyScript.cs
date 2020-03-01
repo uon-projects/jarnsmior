@@ -129,6 +129,11 @@ public class MainCharacterSmithyScript : MonoBehaviour
             }
 
         }
+<<<<<<< Updated upstream
+=======
+        
+
+>>>>>>> Stashed changes
     }
 
     public void SetMove(int move)
@@ -167,7 +172,10 @@ public class MainCharacterSmithyScript : MonoBehaviour
                 }
                 else if (charTarget == targetPositionLanding)
                 {
+<<<<<<< Updated upstream
                     print("Working");
+=======
+>>>>>>> Stashed changes
                     charTarget = targetPositionStairs;
                 }
                 else if(charTarget == targetPositionStairs)
@@ -238,6 +246,22 @@ public class MainCharacterSmithyScript : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
+=======
+    public void setIsSmithing(bool state)
+    {
+
+        isSmithing = state;
+        cameraShouldZoomIn = false;
+        cameraShouldZoomOut = true;
+        //print(cameraShouldZoomOut);
+        camTarget = camStart;
+        isMoving = 2;
+        //print(camTarget);
+
+    }
+
+>>>>>>> Stashed changes
     private void ZoomIn(Vector3 target)
     {
         gameCamera.orthographicSize -= camSpeed;
@@ -250,12 +274,20 @@ public class MainCharacterSmithyScript : MonoBehaviour
 
     private void ZoomOut(Vector3 target)
     {
+<<<<<<< Updated upstream
+=======
+        
+>>>>>>> Stashed changes
         cameraObj.GetComponent<Camera>().orthographicSize += 0.02f;
         Vector3 cameraPosition;
         cameraPosition.x = cameraObj.transform.position.x;
         cameraPosition.y = cameraObj.transform.position.y;
         cameraPosition.z = -10;
+<<<<<<< Updated upstream
         cameraObj.transform.position = Vector3.Lerp(cameraPosition, target, 0.01f);
+=======
+        cameraObj.transform.position = Vector3.Lerp(cameraPosition, camTarget, 0.01f);
+>>>>>>> Stashed changes
     }
 
     
