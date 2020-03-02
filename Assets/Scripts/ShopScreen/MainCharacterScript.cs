@@ -14,12 +14,15 @@ public class MainCharacterScript : MonoBehaviour {
     private bool interactedWithCustomer = false;
     private bool cutomerComing = false;
     private float rangeWaiting;
+    private Animator mAnimator;
 
     public NPCharacterScript npCharacterScript;
 
     // Use this for initialization
     void Start ()
     {
+        mAnimator = gameObject.GetComponent<Animator>();
+
         GameObject npCharacter = GameObject.FindGameObjectWithTag("NPCharacterShop");
         npCharacterScript = (NPCharacterScript)npCharacter.GetComponent(typeof(NPCharacterScript));
 
@@ -47,8 +50,13 @@ public class MainCharacterScript : MonoBehaviour {
 		if(isMoving != 0)
         {
             Move();
+            mAnimator.SetBool("Walking", true);
         }
-        if(interactedWithCustomer && !cutomerComing)
+        else
+        {
+            mAnimator.SetBool("Walking", false);
+        }
+        if (interactedWithCustomer && !cutomerComing)
         {
             rangeWaiting -= Time.deltaTime;
             if (rangeWaiting < 0)
@@ -93,7 +101,7 @@ public class MainCharacterScript : MonoBehaviour {
                 if (!interactedWithCustomer)
                 {
                     interactedWithCustomer = true;
-                    rangeWaiting = Random.Range(2, 4);
+                    rangeWaiting = Random.Range(3, 6);
                 }
             }
             else
@@ -102,6 +110,7 @@ public class MainCharacterScript : MonoBehaviour {
                 transform.position = Vector3.MoveTowards(transform.position, targetPositionTable, speed * Time.deltaTime);
             }
         }
+        
     }
 
     private void ZoomIn()
@@ -111,7 +120,7 @@ public class MainCharacterScript : MonoBehaviour {
         cameraTarget.x = transform.position.x;
         cameraTarget.y = transform.position.y;
         cameraTarget.z = -20;
-        cameraObj.transform.position = Vector3.Lerp(cameraTarget, targetPositionTable, 0.02f);
+        cameraObj.transform.position = Vector3.Lerp(cameraTarget, targetPositionDoor, 0.02f);
     }
 
     private void ZoomOut()

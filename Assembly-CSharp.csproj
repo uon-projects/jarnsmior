@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\checkWalking.cs" />
     <Compile Include="Assets\Scripts\ShopScreen\DoorScript.cs" />
     <Compile Include="Assets\Scripts\ShopScreen\MainCharacterScript.cs" />
     <Compile Include="Assets\Scripts\ShopScreen\NPCharacterScript.cs" />
@@ -68,6 +69,11 @@
     <Compile Include="Assets\Scripts\ShopScreen\TextHolderScript.cs" />
     <Compile Include="Assets\Scripts\ShopScreen\TextScript.cs" />
     <Compile Include="Assets\Scripts\ShopScreen\TypeWritterEffect.cs" />
+    <Compile Include="Assets\Scripts\SmithyScreen\AnvilSmithSmithyScript.cs" />
+    <Compile Include="Assets\Scripts\SmithyScreen\AnvilSmithyScript.cs" />
+    <Compile Include="Assets\Scripts\SmithyScreen\DoorSmithyScript.cs" />
+    <Compile Include="Assets\Scripts\SmithyScreen\LengthenBarSmithyScript.cs" />
+    <Compile Include="Assets\Scripts\SmithyScreen\MainCharacterSmithyScript.cs" />
     <Compile Include="Assets\Scripts\TestScript.cs" />
     <Compile Include="Assets\Scripts\TestScript2.cs" />
     <Reference Include="UnityEditor.StandardEvents">

@@ -10,6 +10,13 @@ TagManager:
   - NPCharacterShop
   - TextHolderShop
   - TextShop
+  - MainCharacterAnvil
+  - CameraMarker2
+  - ScreenCenter
+  - Anvil
+  - CameraMarker1
+  - LengthenUI
+  - Hammer
   layers:
   - Default
   - TransparentFX
