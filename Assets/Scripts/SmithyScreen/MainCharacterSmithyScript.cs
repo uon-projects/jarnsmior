@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainCharacterSmithyScript : MonoBehaviour
 {
@@ -174,6 +175,7 @@ public class MainCharacterSmithyScript : MonoBehaviour
                 {
 
                     isMoving = 0;
+                    SceneManager.LoadScene("ShopScene");
 
                 }
                 else if (charTarget == targetPositionLanding)
