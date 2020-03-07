@@ -63,22 +63,23 @@
      <Compile Include="Assets\Scripts\ShopScreen\TypeWritterEffect.cs" />
      <Compile Include="Assets\Scripts\SmithyScreen\AnvilSmithSmithyScript.cs" />
      <Compile Include="Assets\Scripts\SmithyScreen\AnvilSmithyScript.cs" />
+     <Compile Include="Assets\Scripts\SmithyScreen\CameraSmithyScript.cs" />
      <Compile Include="Assets\Scripts\SmithyScreen\DoorSmithyScript.cs" />
      <Compile Include="Assets\Scripts\SmithyScreen\LengthenBarSmithyScript.cs" />
      <Compile Include="Assets\Scripts\SmithyScreen\MainCharacterSmithyScript.cs" />
      <Compile Include="Assets\Scripts\TestScript.cs" />
      <Compile Include="Assets\Scripts\TestScript2.cs" />
  <Reference Include="UnityEditor.StandardEvents">
- <HintPath>E:/Unity/Jarnsmior/Jarnsmior/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+ <HintPath>E:/Unity/Backup/Jarnsmior/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>E:/Unity/Jarnsmior/Jarnsmior/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>E:/Unity/Backup/Jarnsmior/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>E:/Unity/Jarnsmior/Jarnsmior/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>E:/Unity/Backup/Jarnsmior/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>E:/Unity/Jarnsmior/Jarnsmior/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>E:/Unity/Backup/Jarnsmior/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>E:/Installs/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
