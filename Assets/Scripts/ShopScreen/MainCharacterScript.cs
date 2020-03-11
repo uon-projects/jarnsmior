@@ -90,6 +90,10 @@ public class MainCharacterScript : MonoBehaviour {
             }
             else
             {
+                if(transform.position.y < 0)
+                {
+                   gameObject.transform.localScale = new Vector3(5.5f, 5.5f, 5);
+                }
                 transform.position = Vector3.MoveTowards(transform.position, targetPositionDoor, speed * Time.deltaTime);
                 ZoomIn();
             }
