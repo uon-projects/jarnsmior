@@ -17,6 +17,9 @@ TagManager:
   - CameraMarker1
   - LengthenUI
   - Hammer
+  - Choice1
+  - Choice2
+  - Choice3
   layers:
   - Default
   - TransparentFX
