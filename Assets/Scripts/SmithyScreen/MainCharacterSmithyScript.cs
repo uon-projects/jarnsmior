@@ -16,8 +16,9 @@ public class MainCharacterSmithyScript : MonoBehaviour
     private bool enableMultiplePress = false;
     private float rangeWaiting;
     private Animator mAnimator;
-    
-    bool isSmithing;
+
+    bool cameraShouldZoomOut;
+    bool cameraShouldZoomIn;
 
     CameraSmithyScript cameraScript;
 
