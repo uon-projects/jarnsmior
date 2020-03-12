@@ -34,13 +34,13 @@ public class LengthenBarSmithyScript : MonoBehaviour {
     float hit8;
     float hit9;
     float hit10;
-    float[] hitStore = new float[10];
+    List<float> hitStore = new List<float>();
 
 
     // Use this for initialization
     void Start () 
     {
-        hitStore[0] = hit1;
+        hitStore.Add(hit1);
         hitStore[1] = hit2;
         hitStore[2] = hit3;
         hitStore[3] = hit4;
