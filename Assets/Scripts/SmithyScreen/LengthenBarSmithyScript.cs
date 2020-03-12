@@ -157,6 +157,7 @@ public class LengthenBarSmithyScript : MonoBehaviour {
             particlesSpawned = false;
             SLAM = true;
             float botdist = gameObject.transform.position.y - bottomPosition.y;
+            hitStore.Add(botdist);
             speed = botdist * 20;
             lengthenAmount += botdist;
             if (speed < 1)
@@ -168,6 +169,16 @@ public class LengthenBarSmithyScript : MonoBehaviour {
                 timeToWait = 0.25f;
             }
             mainCharacterScript.SetAnimation("ToSlam", true);
+            calulateConsistecy();
         }
+    }
+
+    float calulateConsistecy()
+    {
+        hitStore.ForEach(delegate (float hit)
+        {
+            Debug.Log(hit);
+        });
+        return 0;
     }
 }
