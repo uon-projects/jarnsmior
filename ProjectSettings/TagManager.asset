@@ -17,6 +17,7 @@ TagManager:
   - CameraMarker1
   - LengthenUI
   - Hammer
+  - MetalLength
   - Choice1
   - Choice2
   - Choice3
@@ -54,6 +55,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: UI
+    uniqueID: 2338746077
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
