@@ -175,10 +175,11 @@ public class LengthenBarSmithyScript : MonoBehaviour {
 
     float calulateConsistecy()
     {
-        hitStore.ForEach(delegate (float hit)
+        for(int i=0; i<hitStore.Capacity - 1; i++)
         {
-            Debug.Log(hit);
-        });
+            Debug.Log(i);
+            Debug.Log(hitStore[i] - hitStore[i + 1]);
+        }
         return 0;
     }
 }
