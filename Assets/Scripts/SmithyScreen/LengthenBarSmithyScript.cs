@@ -23,33 +23,13 @@ public class LengthenBarSmithyScript : MonoBehaviour {
     float lengthenAmount;
 
     char hitCounter;
-
-    float hit1;
-    float hit2;
-    float hit3;
-    float hit4;
-    float hit5;
-    float hit6;
-    float hit7;
-    float hit8;
-    float hit9;
-    float hit10;
+    
     List<float> hitStore = new List<float>();
 
 
     // Use this for initialization
     void Start () 
     {
-        hitStore.Add(hit1);
-        hitStore[1] = hit2;
-        hitStore[2] = hit3;
-        hitStore[3] = hit4;
-        hitStore[4] = hit5;
-        hitStore[5] = hit6;
-        hitStore[6] = hit7;
-        hitStore[7] = hit8;
-        hitStore[8] = hit9;
-        hitStore[9] = hit10;
 
         metalLength = GameObject.FindGameObjectWithTag("MetalLength");
         hammer = GameObject.FindGameObjectWithTag("Hammer");
