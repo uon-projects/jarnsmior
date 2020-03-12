@@ -16,9 +16,8 @@ public class MainCharacterSmithyScript : MonoBehaviour
     private bool enableMultiplePress = false;
     private float rangeWaiting;
     private Animator mAnimator;
-
-    bool cameraShouldZoomOut;
-    bool cameraShouldZoomIn;
+    
+    bool isSmithing;
 
     CameraSmithyScript cameraScript;
 
@@ -103,41 +102,7 @@ public class MainCharacterSmithyScript : MonoBehaviour
         {
             mAnimator.SetBool("Walking", false);
         }
-        if(cameraShouldZoomOut)
-        {
-            //print("Working");
-            if (gameCamera.orthographicSize <= 6)
-            {
-                
-                ZoomOut(camTarget);
-                //print(camTarget);
-
-            }
-            else
-            {
-                cameraShouldZoomOut = false;
-                //print(camTarget);
-            }
-
-
-        }
-        else if (cameraShouldZoomIn)
-        {
-            print(gameCamera.orthographicSize);
-            if (gameCamera.orthographicSize >= 2.5f)
-            {
-
-                ZoomIn(camTarget);
-                
-
-            }
-            else
-            {
-                camTarget = camStart;
-                cameraShouldZoomIn = false;
-            }
-
-        }
+        
        
 
     }
