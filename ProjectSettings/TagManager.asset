@@ -18,6 +18,9 @@ TagManager:
   - LengthenUI
   - Hammer
   - MetalLength
+  - Choice1
+  - Choice2
+  - Choice3
   layers:
   - Default
   - TransparentFX

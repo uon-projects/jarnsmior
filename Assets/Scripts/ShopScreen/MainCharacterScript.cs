@@ -33,7 +33,7 @@ public class MainCharacterScript : MonoBehaviour {
 
 
         GameObject table = GameObject.FindGameObjectWithTag("TableShop");
-        targetPositionTable.x = table.transform.position.x + table.GetComponent<SpriteRenderer>().bounds.size.x / 2 + GetComponent<SpriteRenderer>().bounds.size.x / 2 + 0.2f;
+        targetPositionTable.x = table.transform.position.x - table.GetComponent<SpriteRenderer>().bounds.size.x / 4 + GetComponent<SpriteRenderer>().bounds.size.x / 2 + 0.2f;
         targetPositionTable.y = table.transform.position.y + table.GetComponent<SpriteRenderer>().bounds.size.y / 5;
         targetPositionTable.z = transform.position.z;
 
@@ -90,6 +90,10 @@ public class MainCharacterScript : MonoBehaviour {
             }
             else
             {
+                if(transform.position.y < 0)
+                {
+                   gameObject.transform.localScale = new Vector3(5.5f, 5.5f, 5);
+                }
                 transform.position = Vector3.MoveTowards(transform.position, targetPositionDoor, speed * Time.deltaTime);
                 ZoomIn();
             }

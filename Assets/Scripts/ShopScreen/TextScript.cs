@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class TextChoice
@@ -26,7 +27,9 @@ public class TextScript : MonoBehaviour {
     int textToShow = 0;
     public bool isVisible = false;
     private TypeWritterEffect typeWritterEffect;
-
+    private GameObject mChoice1;
+    private GameObject mChoice2;
+    private GameObject mChoice3;
     // Use this for initialization
     void Start ()
     {
@@ -35,6 +38,12 @@ public class TextScript : MonoBehaviour {
         textValues = JsonUtility.FromJson<TextChoices>(contents);
 
         GameObject textShop = GameObject.FindGameObjectWithTag("TextShop");
+        mChoice1 = GameObject.FindGameObjectWithTag("Choice1");
+        mChoice2 = GameObject.FindGameObjectWithTag("Choice2");
+        mChoice3 = GameObject.FindGameObjectWithTag("Choice3");
+        mChoice1.SetActive(false);
+        mChoice2.SetActive(false);
+        mChoice3.SetActive(false);
         typeWritterEffect = (TypeWritterEffect)textShop.GetComponent(typeof(TypeWritterEffect));
 
         if (textValues != null)
@@ -61,6 +70,9 @@ public class TextScript : MonoBehaviour {
                 TextChoice mTextChoiceP = getItemByID(textToShow);
                 if (mTextChoiceP.child.Capacity == 1)
                 {
+                    mChoice1.SetActive(false);
+                    mChoice2.SetActive(false);
+                    mChoice3.SetActive(false);
                     TextChoice mTextChoice = getItemByID(mTextChoiceP.child[0]);
                     if (mTextChoice.choice != -1)
                     {
@@ -86,9 +98,16 @@ public class TextScript : MonoBehaviour {
                     TextChoice mTextChoice2 = getItemByID(mTextChoiceP.child[1]);
                     TextChoice mTextChoice3 = getItemByID(mTextChoiceP.child[2]);
                     textToShow = mTextChoice2.id;
-                    print("choice 1: " + mTextChoice1.text);
-                    print("choice 2: " + mTextChoice2.text);
-                    print("choice 3: " + mTextChoice3.text);
+                    mChoice1.SetActive(true);
+                    mChoice2.SetActive(true);
+                    mChoice3.SetActive(true);
+
+                    typeWritterEffect.fullText = " ";
+                    typeWritterEffect.startEffect = true;
+                    typeWritterEffect.effectEnded = false;
+                    mChoice1.GetComponent<Text>().text = mTextChoice1.text;
+                    mChoice2.GetComponent<Text>().text = mTextChoice2.text;
+                    mChoice3.GetComponent<Text>().text = mTextChoice3.text;
                 }
             }
         }
