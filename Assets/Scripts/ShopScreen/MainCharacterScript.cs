@@ -86,6 +86,7 @@ public class MainCharacterScript : MonoBehaviour {
             if (transform.position == targetPositionDoor)
             {
                 isMoving = 0;
+                SceneManager.LoadScene("SmithyScene");
             }
             else
             {

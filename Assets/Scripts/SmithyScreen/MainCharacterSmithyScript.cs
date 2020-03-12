@@ -1,26 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainCharacterSmithyScript : MonoBehaviour
 {
     public int isMoving = 0;
     public Vector3 charTarget;
-    private Vector3 camTarget, camStart,  targetPositionDoor, targetPositionStairs, targetPositionLanding, targetPositionAnvil;
+    private Vector3  camStart, targetPositionDoor, targetPositionStairs, targetPositionLanding, targetPositionAnvil;
     private int speed = 5;
-    private float zoomScale;
     private GameObject cameraObj;
     private GameObject smithAnvil;
     private GameObject lengthenUI;
-    private Camera gameCamera;
+    
     private bool enableMultiplePress = false;
     private float rangeWaiting;
     private Animator mAnimator;
-    bool cameraShouldZoomOut = false;
-    bool cameraShouldZoomIn = false;
+    
     bool isSmithing;
 
-    float camSpeed;
+    CameraSmithyScript cameraScript;
 
     // Use this for initialization
     void Start()
@@ -59,24 +58,23 @@ public class MainCharacterSmithyScript : MonoBehaviour
         targetPositionLanding.z = transform.position.z;
         //print(targetPositionLanding);
 
+
+
+        GameObject cameraObj = GameObject.FindGameObjectWithTag("MainCamera");
+        cameraScript = (CameraSmithyScript)cameraObj.GetComponent(typeof(CameraSmithyScript));
+
+
         GameObject screenCenter = GameObject.FindGameObjectWithTag("ScreenCenter");
         camStart.x = screenCenter.transform.position.x;
         camStart.y = screenCenter.transform.position.y;
         camStart.z = -10;
 
-        camTarget = camStart;
-
-
-        cameraObj = GameObject.FindGameObjectWithTag("MainCamera");
-        gameCamera = cameraObj.GetComponent<Camera>();
-
-        cameraObj.transform.position = new Vector3(targetPositionDoor.x, targetPositionDoor.y, camTarget.z);
 
         transform.position = targetPositionDoor;
         isMoving = 2;
         charTarget = targetPositionStairs;
-        zoomScale = 3.04f;
-        gameCamera.orthographicSize = zoomScale;
+        
+        
     }
 
     // Update is called once per frame
@@ -92,52 +90,19 @@ public class MainCharacterSmithyScript : MonoBehaviour
             
         }
         else if (isSmithing)
-        {          
+        {
+            cameraScript.setTarget(targetPositionAnvil, true);
             smithAnvil.SetActive(true);
             lengthenUI.SetActive(true);
             gameObject.SetActive(false);
+            
 
         }
         else
         {
             mAnimator.SetBool("Walking", false);
         }
-        if(cameraShouldZoomOut)
-        {
-            print(gameCamera.orthographicSize);
-            //print("Working");
-            if (gameCamera.orthographicSize <= 6)
-            {
-                
-                ZoomOut(camTarget);
-                //print(camTarget);
-
-            }
-            else
-            {
-                cameraShouldZoomOut = false;
-                //print(camTarget);
-            }
-
-
-        }
-        else if (cameraShouldZoomIn)
-        {
-            print(gameCamera.orthographicSize);
-            if (gameCamera.orthographicSize >= 2.5f)
-            {
-
-                ZoomIn(camTarget);
-                
-
-            }
-            else
-            {
-                camTarget = camStart;
-                cameraShouldZoomIn = false;
-            }
-
-        }
+        
        
 
     }
@@ -174,6 +139,7 @@ public class MainCharacterSmithyScript : MonoBehaviour
                 {
 
                     isMoving = 0;
+                    SceneManager.LoadScene("ShopScene");
 
                 }
                 else if (charTarget == targetPositionLanding)
@@ -191,9 +157,8 @@ public class MainCharacterSmithyScript : MonoBehaviour
             else
             {
                 transform.position = Vector3.MoveTowards(transform.position, charTarget, speed * Time.deltaTime);
-                camTarget = targetPositionDoor;
-                cameraShouldZoomIn = true;
-                camSpeed = 0.01f;
+                cameraScript.setTarget(targetPositionDoor, true);
+                
 
             }
         }
@@ -214,8 +179,7 @@ public class MainCharacterSmithyScript : MonoBehaviour
             }
             else
             {
-                camTarget = camStart;
-                cameraShouldZoomOut = true;
+                cameraScript.setTarget(camStart, false);
                 transform.position = Vector3.MoveTowards(transform.position, charTarget, speed * Time.deltaTime);
             }
         }
@@ -230,9 +194,8 @@ public class MainCharacterSmithyScript : MonoBehaviour
             else
             {
                 transform.position = Vector3.MoveTowards(transform.position, charTarget, speed * Time.deltaTime);
-                camTarget = targetPositionAnvil;
-                cameraShouldZoomIn = true;
-                camSpeed = 0.02f;
+                cameraScript.setTarget(targetPositionAnvil, true);
+                
                 
             }
 
@@ -254,34 +217,12 @@ public class MainCharacterSmithyScript : MonoBehaviour
     {
 
         isSmithing = state;
-        cameraShouldZoomIn = false;
-        cameraShouldZoomOut = true;
-        //print(cameraShouldZoomOut);
-        camTarget = camStart;
-        //print(camTarget);
-
-    }
-
-    private void ZoomIn(Vector3 target)
-    {
-        gameCamera.orthographicSize -= camSpeed;
-        Vector3 cameraPosition;
-        cameraPosition.x = cameraObj.transform.position.x;
-        cameraPosition.y = cameraObj.transform.position.y;
-        cameraPosition.z = -10;
-        cameraObj.transform.position = Vector3.Lerp(cameraPosition, target, 0.01f);
-    }
-
-    private void ZoomOut(Vector3 target)
-    {
+        cameraScript.setTarget(camStart, false);
         
-        cameraObj.GetComponent<Camera>().orthographicSize += 0.02f;
-        Vector3 cameraPosition;
-        cameraPosition.x = cameraObj.transform.position.x;
-        cameraPosition.y = cameraObj.transform.position.y;
-        cameraPosition.z = cameraObj.transform.position.z;
-        cameraObj.transform.position = Vector3.Lerp(cameraPosition, camTarget, 0.01f);
+
     }
+
+    
 
     
 }
