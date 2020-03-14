@@ -43,7 +43,6 @@ public class CameraSmithyScript : MonoBehaviour {
 
         if (cameraShouldZoomOut)
         {
-            print(gameCamera.orthographicSize);
             //print("Working");
             if (gameCamera.orthographicSize <= 6)
             {
