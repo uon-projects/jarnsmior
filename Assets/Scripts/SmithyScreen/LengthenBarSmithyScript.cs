@@ -23,12 +23,33 @@ public class LengthenBarSmithyScript : MonoBehaviour {
     float lengthenAmount;
 
     char hitCounter;
-    
-    CalculateConsistency mCalculateConsistency;
+
+    float hit1;
+    float hit2;
+    float hit3;
+    float hit4;
+    float hit5;
+    float hit6;
+    float hit7;
+    float hit8;
+    float hit9;
+    float hit10;
+    float[] hitStore = new float[10];
+
 
     // Use this for initialization
     void Start () 
     {
+        hitStore[0] = hit1;
+        hitStore[1] = hit2;
+        hitStore[2] = hit3;
+        hitStore[3] = hit4;
+        hitStore[4] = hit5;
+        hitStore[5] = hit6;
+        hitStore[6] = hit7;
+        hitStore[7] = hit8;
+        hitStore[8] = hit9;
+        hitStore[9] = hit10;
 
         metalLength = GameObject.FindGameObjectWithTag("MetalLength");
         hammer = GameObject.FindGameObjectWithTag("Hammer");
@@ -41,7 +62,6 @@ public class LengthenBarSmithyScript : MonoBehaviour {
         bottomPosition = new Vector3(40.74f, 27.53f, 0); 
         GameObject mainCharacter = GameObject.FindGameObjectWithTag("MainCharacterAnvil");
         mainCharacterScript = (AnvilSmithSmithyScript)mainCharacter.GetComponent(typeof(AnvilSmithSmithyScript));
-        mCalculateConsistency = new CalculateConsistency();
 
     }
 	
@@ -157,7 +177,6 @@ public class LengthenBarSmithyScript : MonoBehaviour {
             particlesSpawned = false;
             SLAM = true;
             float botdist = gameObject.transform.position.y - bottomPosition.y;
-            mCalculateConsistency.Add(botdist);
             speed = botdist * 20;
             lengthenAmount += botdist;
             if (speed < 1)

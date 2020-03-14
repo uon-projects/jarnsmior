@@ -7,8 +7,8 @@ public class MainCharacterSmithyScript : MonoBehaviour
 {
     public int isMoving = 0;
     public Vector3 charTarget;
-    private Vector3  camStart, targetPositionDoor, targetPositionStairs, targetPositionLanding, targetPositionAnvil;
-    private int speed = 5;
+    private Vector3  camStart, targetPositionDoor, targetPositionStairs, targetPositionLanding, targetPositionAnvil, targetPositionBook;
+    private int speed = 50;
     private GameObject cameraObj;
     private GameObject smithAnvil;
     private GameObject lengthenUI;
@@ -41,7 +41,7 @@ public class MainCharacterSmithyScript : MonoBehaviour
 
         GameObject anvil = GameObject.FindGameObjectWithTag("Anvil");
         targetPositionAnvil.x = anvil.transform.position.x;
-        targetPositionAnvil.y = 29.44f;
+        targetPositionAnvil.y = -12.7f;
         targetPositionAnvil.z = transform.position.z;
 
         GameObject topStairs = GameObject.FindGameObjectWithTag("CameraMarker1");
@@ -58,6 +58,10 @@ public class MainCharacterSmithyScript : MonoBehaviour
         targetPositionLanding.z = transform.position.z;
         //print(targetPositionLanding);
 
+        GameObject bookShelf = GameObject.FindGameObjectWithTag("BookShelf");
+        targetPositionBook.x = bookShelf.transform.position.x;
+        targetPositionBook.y = -12.7f;
+        targetPositionBook.z = transform.position.z;
 
 
         GameObject cameraObj = GameObject.FindGameObjectWithTag("MainCamera");
@@ -91,11 +95,17 @@ public class MainCharacterSmithyScript : MonoBehaviour
         }
         else if (isSmithing)
         {
-            cameraScript.setTarget(targetPositionAnvil, true);
+            GameObject bookShelf = GameObject.FindGameObjectWithTag("BookShelf");
+            Collider2D toDisable = bookShelf.GetComponent<Collider2D>();
+            toDisable.enabled = false;
+
+            //cameraScript.setTarget(targetPositionAnvil, true);
             smithAnvil.SetActive(true);
             lengthenUI.SetActive(true);
             gameObject.SetActive(false);
+
             
+
 
         }
         else
@@ -154,12 +164,17 @@ public class MainCharacterSmithyScript : MonoBehaviour
                 
 
             }
+            else if (charTarget != targetPositionLanding)
+            {
+                
+                cameraScript.setTarget(targetPositionDoor, true);
+                transform.position = Vector3.MoveTowards(transform.position, charTarget, speed * Time.deltaTime);
+
+
+            }
             else
             {
                 transform.position = Vector3.MoveTowards(transform.position, charTarget, speed * Time.deltaTime);
-                cameraScript.setTarget(targetPositionDoor, true);
-                
-
             }
         }
         else if (isMoving == 2)
@@ -186,7 +201,7 @@ public class MainCharacterSmithyScript : MonoBehaviour
         else if(isMoving == 3)
         {
 
-            if (transform.position.x <= targetPositionAnvil.x)
+            if (transform.position.x <= targetPositionAnvil.x && transform.position.x >= targetPositionAnvil.x-0.1f)
             {
                 isMoving = 0;
                 isSmithing = true;
@@ -200,8 +215,24 @@ public class MainCharacterSmithyScript : MonoBehaviour
             }
 
         }
+        else if(isMoving == 4)
+        {
+            if (transform.position.x <= targetPositionBook.x)
+            {
+                isMoving = 0;
+                
+            }
+            else
+            {
+                transform.position = Vector3.MoveTowards(transform.position, targetPositionBook, speed * Time.deltaTime);
+                cameraScript.setTarget(targetPositionBook, true);
+                charTarget = targetPositionBook;
 
-        if (charTarget.x < transform.position.x)
+
+            }
+        }
+
+            if (charTarget.x < transform.position.x)
         {
 
             transform.localScale = new Vector3(-5.5f, 5.5f, 5f);
