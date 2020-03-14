@@ -21,22 +21,38 @@ public class CalculateConsistency : MonoBehaviour
     int counter = 0;
     public void Add(float n)
     {
-        mList.Add(n);
-        mArray[counter] = n;
-        counter++;
-        //calulateConsistecy();
+        if(counter < 9)
+        {
+            mArray[counter] = n;
+            counter++;
+            if(counter == 9)
+            {
+                GameObject mainCharacter = GameObject.FindGameObjectWithTag("MainCharacterShop");
+                MainCharacterSmithyScript mainCharacterScript = (MainCharacterSmithyScript)mainCharacter.GetComponent(typeof(MainCharacterSmithyScript));
+            }
+        }
+        calulateConsistecy();
     }
     public float[] GetList()
     {
         return mArray;
     }
+    public bool canAdd()
+    {
+        if (counter < 9)
+        {
+            return true;
+        }
+        return false;
+    }
 
     void calulateConsistecy()
     {
-        
-        for (int i=0; i<mList.Capacity-1; i++)
+        int i = 0;
+        while(mArray[i] != 0)
         {
-            Debug.Log(mList[i]);
+            Debug.Log(mArray[i]);
+            i++;
         }
     }
 
