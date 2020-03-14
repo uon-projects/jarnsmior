@@ -42,7 +42,8 @@ public class LengthenBarSmithyScript : MonoBehaviour {
         bottomPosition = new Vector3(40.74f, 27.53f, 0); 
         GameObject mainCharacter = GameObject.FindGameObjectWithTag("MainCharacterAnvil");
         mainCharacterScript = (AnvilSmithSmithyScript)mainCharacter.GetComponent(typeof(AnvilSmithSmithyScript));
-        mCalculateConsistency = new CalculateConsistency;
+        mCalculateConsistency = new CalculateConsistency();
+        mCalculateConsistency.Initinialize();
 
     }
 	
