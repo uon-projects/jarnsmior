@@ -27,7 +27,9 @@ public class CalculateConsistency : MonoBehaviour
             counter++;
             if(counter == 9)
             {
-                Debug.Log(calulateConsistency());
+                calulateConsistency();
+                GameObject mainCharacter = GameObject.FindGameObjectWithTag("MainCharacterShop");
+                MainCharacterSmithyScript mainCharacterScript = (MainCharacterSmithyScript)mainCharacter.GetComponent(typeof(MainCharacterSmithyScript));
             }
         }
     }
