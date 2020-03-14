@@ -28,8 +28,6 @@ public class CalculateConsistency : MonoBehaviour
             if(counter == 9)
             {
                 calulateConsistency();
-                GameObject mainCharacter = GameObject.FindGameObjectWithTag("MainCharacterShop");
-                MainCharacterSmithyScript mainCharacterScript = (MainCharacterSmithyScript)mainCharacter.GetComponent(typeof(MainCharacterSmithyScript));
             }
         }
     }
