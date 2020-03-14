@@ -37,6 +37,7 @@ public class CalculateConsistency
         {
             Debug.Log(i);
             Debug.Log(mList[i] - mList[+1]);
+            i++;
         }
     }
 
