@@ -5,8 +5,10 @@ using UnityEngine;
 public class CalculateConsistency
 {
 
-	// Use this for initialization
-	void Start () {
+    public List<float> mList = new List<float>();
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
