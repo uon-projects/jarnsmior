@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\checkWalking.cs" />
+    <Compile Include="Assets\Scripts\ShopScreen\ChoiceClicked.cs" />
     <Compile Include="Assets\Scripts\ShopScreen\DoorScript.cs" />
     <Compile Include="Assets\Scripts\ShopScreen\MainCharacterScript.cs" />
     <Compile Include="Assets\Scripts\ShopScreen\NPCharacterScript.cs" />
