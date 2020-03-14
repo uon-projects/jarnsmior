@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\ShopScreen\TypeWritterEffect.cs" />
     <Compile Include="Assets\Scripts\SmithyScreen\AnvilSmithSmithyScript.cs" />
     <Compile Include="Assets\Scripts\SmithyScreen\AnvilSmithyScript.cs" />
+    <Compile Include="Assets\Scripts\SmithyScreen\CalculateConsistency.cs" />
     <Compile Include="Assets\Scripts\SmithyScreen\CameraSmithyScript.cs" />
     <Compile Include="Assets\Scripts\SmithyScreen\DoorSmithyScript.cs" />
     <Compile Include="Assets\Scripts\SmithyScreen\LengthenBarSmithyScript.cs" />
