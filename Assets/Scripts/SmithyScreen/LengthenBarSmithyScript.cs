@@ -24,7 +24,6 @@ public class LengthenBarSmithyScript : MonoBehaviour {
 
     char hitCounter;
     
-    List<float> hitStore = new List<float>();
     CalculateConsistency mCalculateConsistency;
 
 
@@ -159,7 +158,7 @@ public class LengthenBarSmithyScript : MonoBehaviour {
             particlesSpawned = false;
             SLAM = true;
             float botdist = gameObject.transform.position.y - bottomPosition.y;
-            hitStore.Add(botdist);
+            mCalculateConsistency.Add(botdist);
             speed = botdist * 20;
             lengthenAmount += botdist;
             if (speed < 1)
