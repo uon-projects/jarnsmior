@@ -27,7 +27,7 @@ public class CalculateConsistency : MonoBehaviour
             counter++;
             if(counter == 9)
             {
-                Debug.Log(calulateConsistecy().Capacity);
+                Debug.Log(calulateConsistency());
             }
         }
     }
@@ -44,7 +44,7 @@ public class CalculateConsistency : MonoBehaviour
         return false;
     }
 
-    public List<float> calulateConsistecy()
+    public float[] calulateConsistency()
     {
         int i = 0;
         float sum = 0;
@@ -64,9 +64,10 @@ public class CalculateConsistency : MonoBehaviour
             i++;
         }
         float avg = sum / 10;
-        List<float> mList = new List<float>();
-        mList.Add(avg - low);
-        mList.Add(avg - high);
+        float[] mList = {
+            avg - low,
+            avg - high
+        };
         return mList;
     }
 
