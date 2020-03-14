@@ -26,7 +26,6 @@ public class LengthenBarSmithyScript : MonoBehaviour {
     
     CalculateConsistency mCalculateConsistency;
 
-
     // Use this for initialization
     void Start () 
     {
@@ -43,7 +42,6 @@ public class LengthenBarSmithyScript : MonoBehaviour {
         GameObject mainCharacter = GameObject.FindGameObjectWithTag("MainCharacterAnvil");
         mainCharacterScript = (AnvilSmithSmithyScript)mainCharacter.GetComponent(typeof(AnvilSmithSmithyScript));
         mCalculateConsistency = new CalculateConsistency();
-        mCalculateConsistency.Initinialize();
 
     }
 	
