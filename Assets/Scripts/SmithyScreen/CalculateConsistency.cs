@@ -65,7 +65,14 @@ public class CalculateConsistency : MonoBehaviour
             i++;
         }
         float avg = sum / 10;
-        if()
+        if(avg - low < avg - high)
+        {
+            Debug.Log("l");
+        }
+        else
+        {
+            Debug.Log("h");
+        }
     }
 
 }
