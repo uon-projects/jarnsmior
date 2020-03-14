@@ -32,10 +32,11 @@ public class CalculateConsistency
 
     void calulateConsistecy()
     {
-        for (int i = 0; i < mList.Capacity - 1; i++)
+        int i = 0;
+        while(i<mList.Capacity - 1)
         {
             Debug.Log(i);
-            Debug.Log(mList[i] - mList[ + 1]);
+            Debug.Log(mList[i] - mList[+1]);
         }
     }
 
