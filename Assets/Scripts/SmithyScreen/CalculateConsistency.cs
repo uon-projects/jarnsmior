@@ -68,8 +68,6 @@ public class CalculateConsistency : MonoBehaviour
             avg - low,
             avg - high
         };
-        Debug.Log(mList[0]);
-        Debug.Log(mList[1]);
         return mList;
     }
 
