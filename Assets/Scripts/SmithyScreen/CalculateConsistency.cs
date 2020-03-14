@@ -44,7 +44,7 @@ public class CalculateConsistency : MonoBehaviour
         return false;
     }
 
-    void calulateConsistecy()
+    public float calulateConsistecy()
     {
         int i = 0;
         float sum = 0;
@@ -64,14 +64,7 @@ public class CalculateConsistency : MonoBehaviour
             i++;
         }
         float avg = sum / 10;
-        if(avg - low < avg - high)
-        {
-            Debug.Log("l");
-        }
-        else
-        {
-            Debug.Log("h");
-        }
+        return (avg - low < avg - high) ? avg - low : avg - high;
     }
 
 }
