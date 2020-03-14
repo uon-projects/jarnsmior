@@ -27,10 +27,9 @@ public class CalculateConsistency : MonoBehaviour
             counter++;
             if(counter == 9)
             {
-
+                calulateConsistecy();
             }
         }
-        calulateConsistecy();
     }
     public float[] GetList()
     {
