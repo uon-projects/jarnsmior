@@ -61,7 +61,6 @@ public class CameraSmithyScript : MonoBehaviour {
         }
         else if (cameraShouldZoomIn)
         {
-            print(gameCamera.orthographicSize);
             if (gameCamera.orthographicSize >= 2.5f)
             {
 
