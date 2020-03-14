@@ -27,8 +27,7 @@ public class CalculateConsistency : MonoBehaviour
             counter++;
             if(counter == 9)
             {
-                GameObject mainCharacter = GameObject.FindGameObjectWithTag("MainCharacterShop");
-                MainCharacterSmithyScript mainCharacterScript = (MainCharacterSmithyScript)mainCharacter.GetComponent(typeof(MainCharacterSmithyScript));
+
             }
         }
         calulateConsistecy();
@@ -49,9 +48,11 @@ public class CalculateConsistency : MonoBehaviour
     void calulateConsistecy()
     {
         int i = 0;
-        while(mArray[i] != 0)
+        while(mArray[i] != 0 && i<9)
         {
             Debug.Log(mArray[i]);
+            Debug.Log(mArray[i+1]);
+            Debug.Log("h");
             i++;
         }
     }
