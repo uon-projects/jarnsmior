@@ -170,17 +170,6 @@ public class LengthenBarSmithyScript : MonoBehaviour {
                 timeToWait = 0.25f;
             }
             mainCharacterScript.SetAnimation("ToSlam", true);
-            calulateConsistecy();
         }
-    }
-
-    float calulateConsistecy()
-    {
-        for(int i=0; i<hitStore.Capacity - 1; i++)
-        {
-            Debug.Log(i);
-            Debug.Log(hitStore[i] - hitStore[i + 1]);
-        }
-        return 0;
     }
 }
