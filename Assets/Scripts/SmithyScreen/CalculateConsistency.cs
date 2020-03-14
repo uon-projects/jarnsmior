@@ -27,7 +27,7 @@ public class CalculateConsistency : MonoBehaviour
             counter++;
             if(counter == 9)
             {
-                calulateConsistecy();
+                Debug.Log(calulateConsistecy().Capacity);
             }
         }
     }
