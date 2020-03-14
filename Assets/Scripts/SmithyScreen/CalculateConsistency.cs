@@ -48,13 +48,24 @@ public class CalculateConsistency : MonoBehaviour
     void calulateConsistecy()
     {
         int i = 0;
-        while(mArray[i] != 0 && i<9)
+        float sum = 0;
+        float low = 10;
+        float high = 0;
+        while(mArray[i] != 0 && i<10)
         {
-            Debug.Log(mArray[i]);
-            Debug.Log(mArray[i+1]);
-            Debug.Log("h");
+            sum+=mArray[i];
+            if (mArray[i] < low)
+            {
+                low = mArray[i];
+            }
+            if (mArray[i] > high)
+            {
+                high = mArray[i];
+            }
             i++;
         }
+        float avg = sum / 10;
+        if()
     }
 
 }
