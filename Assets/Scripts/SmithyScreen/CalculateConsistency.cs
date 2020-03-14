@@ -2,42 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CalculateConsistency
+public class CalculateConsistency : MonoBehaviour
 {
 
     List<float> mList = new List<float>();
+    float[] mArray = {
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+    };
+    int counter = 0;
     public void Add(float n)
     {
         mList.Add(n);
-        calulateConsistecy();
+        mArray[counter] = n;
+        counter++;
+        //calulateConsistecy();
     }
-    public List<float> GetList()
+    public float[] GetList()
     {
-        return mList;
-    }
-    public void Initinialize()
-    {
-        mList = new List<float>();
-    }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
+        return mArray;
     }
 
     void calulateConsistecy()
     {
-        int i = 0;
-        while(i<mList.Capacity - 1)
+        
+        for (int i=0; i<mList.Capacity-1; i++)
         {
-            Debug.Log(i);
-            Debug.Log(mList[i] - mList[+1]);
-            i++;
+            Debug.Log(mList[i]);
         }
     }
 
