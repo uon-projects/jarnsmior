@@ -63,11 +63,11 @@ public class TextScript : MonoBehaviour {
 
     void OnMouseDown()
     {
+        TextChoice mTextChoiceP = getItemByID(textToShow);
         if (isVisible)
         {
             if (typeWritterEffect.effectEnded && typeWritterEffect.fullText.Length == 0)
             {
-                TextChoice mTextChoiceP = getItemByID(textToShow);
                 if (mTextChoiceP.child.Capacity == 1)
                 {
                     mChoice1.SetActive(false);
@@ -141,7 +141,24 @@ public class TextScript : MonoBehaviour {
                 typeWritterEffect.fullText = textValues.story_line[textToShow].text;
             }
         }
-	}
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (collider.Raycast(ray, out hit, 100.0F))
+            {
+                if (hit.collider.gameObject.name == "YourGameObjectName")
+                {
+                    //Perform action here.
+                }
+                //Or use 
+                if (hit.collider.CompareTag("YourGameObjectTag"))
+                {
+                    //Perform action here.
+                }
+            }
+        }
+    }
 
     public void MakeVisible(bool visibile)
     {

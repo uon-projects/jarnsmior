@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChoiceClicked
+public class ChoiceClicked : MonoBehaviour
 {
 
+    public int choice = 0;
 	// Use this for initialization
 	void Start () {
 		
@@ -14,4 +15,10 @@ public class ChoiceClicked
 	void Update () {
 		
 	}
+
+    void OnMouseDown()
+    {
+        Debug.Log(choice);
+    }
+
 }
