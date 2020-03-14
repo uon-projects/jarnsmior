@@ -36,6 +36,9 @@ public class AnvilSmithSmithyScript : MonoBehaviour {
 
         returnSmith.SetActive(true);
         LengthenUI.SetActive(false);
+        GameObject bookShelf = GameObject.FindGameObjectWithTag("BookShelf");
+        Collider2D toEnable = bookShelf.GetComponent<Collider2D>();
+        toEnable.enabled = true;
         mainCharacterScript = (MainCharacterSmithyScript)returnSmith.GetComponent(typeof(MainCharacterSmithyScript));
         mainCharacterScript.setIsSmithing(false);
         gameObject.SetActive(false);

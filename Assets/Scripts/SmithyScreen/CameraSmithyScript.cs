@@ -6,6 +6,7 @@ public class CameraSmithyScript : MonoBehaviour {
 
     bool cameraShouldZoomOut = false;
     bool cameraShouldZoomIn = false;
+    bool cameraShouldMove = true;
     private float zoomScale;
     float camSpeed;
 
@@ -26,12 +27,13 @@ public class CameraSmithyScript : MonoBehaviour {
         gameCamera = gameObject.GetComponent<Camera>();
         gameObject.transform.position = new Vector3(targetPositionDoor.x, targetPositionDoor.y, -10);
 
-        
-        
-        
 
+
+
+        camStart = new Vector3(204.6f, 13.9f, gameObject.transform.position.z);
         camTarget = camStart;
-        zoomScale = 3.04f;
+        
+        zoomScale = 20f;
         gameCamera.orthographicSize = zoomScale;
 
 
@@ -40,14 +42,15 @@ public class CameraSmithyScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-
+        print(camTarget);
         if (cameraShouldZoomOut)
         {
+            
             //print("Working");
-            if (gameCamera.orthographicSize <= 6)
+            if (gameCamera.orthographicSize <= 53)
             {
 
-                ZoomOut(camTarget);
+                ZoomOut();
                 //print(camTarget);
 
             }
@@ -61,47 +64,69 @@ public class CameraSmithyScript : MonoBehaviour {
         }
         else if (cameraShouldZoomIn)
         {
-            if (gameCamera.orthographicSize >= 2.5f)
+            
+            if (gameCamera.orthographicSize >= 20f)
             {
 
-                ZoomIn(camTarget);
+                ZoomIn();
 
 
             }
             else
             {
-                camTarget = camStart;
+                //camTarget = camStart;
                 cameraShouldZoomIn = false;
+            }
+
+        }
+        if (cameraShouldMove)
+        {
+
+            if (gameObject.transform.position != camTarget)
+            {
+
+                Move(camTarget);
+
+            }
+            else
+            {
+
+                cameraShouldMove = false;
+                camTarget = camStart;
+
             }
 
         }
 
     }
 
-    private void ZoomIn(Vector3 target)
+    private void ZoomIn()
     {
-        gameCamera.orthographicSize -= 0.02f;
-        Vector3 cameraPosition;
-        cameraPosition.x = gameObject.transform.position.x;
-        cameraPosition.y = gameObject.transform.position.y;
-        cameraPosition.z = -10;
-        gameObject.transform.position = Vector3.Lerp(cameraPosition, target, 0.01f);
+        gameCamera.orthographicSize -= 0.2f;
+        //Vector3 cameraPosition;
+        //cameraPosition.x = gameObject.transform.position.x;
+        //cameraPosition.y = gameObject.transform.position.y;
+        //cameraPosition.z = gameObject.transform.position.z;
+        //gameObject.transform.position = Vector3.Lerp(cameraPosition, camTarget, 0.02f);
+
     }
 
-    private void ZoomOut(Vector3 target)
+    private void ZoomOut()
     {
-        gameObject.GetComponent<Camera>().orthographicSize += 0.02f;
-        Vector3 cameraPosition;
-        cameraPosition.x = gameObject.transform.position.x;
-        cameraPosition.y = gameObject.transform.position.y;
-        cameraPosition.z = gameObject.transform.position.z;
-        gameObject.transform.position = Vector3.Lerp(cameraPosition, camTarget, 0.01f);
+        gameObject.GetComponent<Camera>().orthographicSize += 0.2f;
+        //Vector3 cameraPosition;
+        //cameraPosition.x = gameObject.transform.position.x;
+        //cameraPosition.y = gameObject.transform.position.y;
+        //cameraPosition.z = gameObject.transform.position.z;
+        //gameObject.transform.position = Vector3.Lerp(cameraPosition, camTarget, 0.02f);
+
     }
 
     public void setTarget(Vector3 target, bool outOrIn)
     {
-
+        print(target);
         camTarget = target;
+        camTarget.z = gameObject.transform.position.z;
         if (outOrIn)
         {
 
@@ -115,5 +140,16 @@ public class CameraSmithyScript : MonoBehaviour {
             cameraShouldZoomIn = false;
         }
 
+    }
+
+    public void Move(Vector3 target)
+    {
+        camTarget = target;
+        target.z = gameObject.transform.position.z;
+        Vector3 cameraPosition;
+        cameraPosition.x = gameObject.transform.position.x;
+        cameraPosition.y = gameObject.transform.position.y;
+        cameraPosition.z = gameObject.transform.position.z;
+        gameObject.transform.position = Vector3.Lerp(cameraPosition, camTarget, 0.02f);
     }
 }
