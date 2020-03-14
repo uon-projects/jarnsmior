@@ -9,10 +9,15 @@ public class CalculateConsistency
     public void Add(float n)
     {
         mList.Add(n);
+        calulateConsistecy();
     }
     public List<float> GetList()
     {
         return mList;
+    }
+    public void Initinialize()
+    {
+        mList = new List<float>();
     }
 
     // Use this for initialization
