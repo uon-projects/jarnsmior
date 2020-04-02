@@ -145,7 +145,7 @@ public class TextScript : MonoBehaviour {
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (collider.Raycast(ray, out hit, 100.0F))
+            if (ray.Raycast(ray, out hit, 100.0F))
             {
                 if (hit.collider.gameObject.name == "YourGameObjectName")
                 {
