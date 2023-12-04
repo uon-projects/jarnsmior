@@ -2,60 +2,105 @@
 	"story_line": [
 		{
 			"id": 0,
-			"text": "text 1",
+			"text": "Smithy's story begins.",
 			"child": [1]
 		},
 		{
 			"id": 1,
-			"text": "I've received a sudden request.",
-			"child": [2, 3, 4]
+			"text": "The first customer enters the shop.",
+			"child": [2]
 		},
 		{
 			"id": 2,
-			"text": "...",
-			"child": [5],
-			"choice": 1,
-			"choicePick": true
+			"text": "Apologies for intruding so early.",
+			"child": [3, 4, 5],
+			"character": "Orion"
 		},
 		{
 			"id": 3,
-			"text": "I've got work to do, be brief.",
+			"text": ".......",
 			"child": [6],
-			"choice": 2,
-			"choicePick": true
+			"choice": 1,
+			"choicePick": true,
+			"character": "Smith"
 		},
 		{
 			"id": 4,
-			"text": "No issue, I'm here to help.",
+			"text": "I've got work to do, be brief.",
 			"child": [7],
-			"choice": 3,
-			"choicePick": true
+			"choice": 2,
+			"choicePick": true,
+			"character": "Smith"
 		},
 		{
 			"id": 5,
-			"text": "choice text 1",
-			"child": [8],
-			"choice": 1,
-			"choicePick": false
+			"text": "No issue, I'm here to help.",
+			"child": [9],
+			"choice": 3,
+			"choicePick": true,
+			"character": "Smith"
 		},
 		{
 			"id": 6,
-			"text": "choice text 2",
-			"child": [8],
+			"text": "I'll get on with it, then",
+			"child": [9],
 			"choice": 1,
-			"choicePick": false
+			"choicePick": false,
+			"character": "Orion"
 		},
 		{
 			"id": 7,
-			"text": "choice text 3",
-			"child": [8],
+			"text": "Impressive attitude. I won't take much of your time",
+			"child": [9],
 			"choice": 1,
-			"choicePick": false
+			"choicePick": false,
+			"character": "Orion"
 		},
 		{
 			"id": 8,
-			"text": "text 4",
-			"child": [-1]
+			"text": "Perfect. Then I am going to order the strongest sword that you can make.",
+			"child": [9],
+			"choice": 1,
+			"choicePick": false,
+			"character": "Orion"
+		},
+		{
+			"id": 9,
+			"text": "A frog like creature, Ktinos, has been rampaging in the Sena swamp. I needn't tell you why this is problematic...",
+			"choicePick": false,
+			"child": [10],
+			"character": "Orion"
+		},
+		{
+			"id": 10,
+			"text": "*The Ruthless Orion gives the Smith a questioning look*",
+			"choicePick": false,
+			"child": [11]
+		},
+		{
+			"id": 11,
+			"text": "*Sigh* The herbalists gather their medicinal plants from the Swamp outskirts. Apparently the frog is usually pretty docile",
+			"choicePick": false,
+			"child": [12]
+		},
+		{
+			"id": 12,
+			"text": "*The orion looks away for a moment* Something seems to be setting the creature off. It... and others",
+			"choicePick": false,
+			"child": [13]
+		},
+		{
+			"id": 13,
+			"text": "*They look back at the smith* You needn't be concerned. It will be dealt with. We've Orions with festering wounds and children with fevers, so I apologise for rushing you, but this request is urgent.",
+			"choicePick": false,
+			"child": [14]
+		},
+		{
+			"id": 14,
+			"text": "I'll see you soon, then. Be ready",
+			"exitRoom": true,
+			"child": [-1],
+			"character": "Orion"
 		}
 	]
 }

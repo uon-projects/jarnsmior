@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/ShopScene.unity
-    guid: ef1dba93bba87a543b8a26d5aa0c44e5
+    path: Assets/Scenes/LandingScreen.unity
+    guid: 8b090911ae16f31498a97f00bb81027b
   - enabled: 1
-    path: Assets/Scenes/SmithyScene.unity
-    guid: fb6460f7ad4ee19468e83f73b2071b4c
+    path: Assets/Scenes/ShopFront.unity
+    guid: 3eb1549223eaa4443b72506d034eb495
+  - enabled: 1
+    path: Assets/Scenes/Smithy.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

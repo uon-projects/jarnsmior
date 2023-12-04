@@ -4,24 +4,32 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - MainCharacterShop
-  - DoorShop
-  - TableShop
-  - NPCharacterShop
-  - TextHolderShop
-  - TextShop
-  - MainCharacterAnvil
-  - CameraMarker2
-  - ScreenCenter
+  - MainCharacterSmithy
+  - MCAnvil
+  - MCFurnace
+  - Book
+  - MCBook
+  - SF_Table
+  - SF_NPCharacter
+  - SF_GameManager
+  - ScrollView
+  - beam
+  - MCBevel
+  - SharpeningAction
+  - SwordHolder
+  - Sword
+  - HeatUI
+  - ScoreManager
+  - S_GameManager
+  - Grindstone
+  - GrindParticles
   - Anvil
-  - CameraMarker1
-  - LengthenUI
-  - Hammer
-  - MetalLength
-  - Choice1
-  - Choice2
-  - Choice3
-  - BookShelf
+  - QuenchingUI
+  - Wedge
+  - ToDoList
+  - ToDoListHint
+  - WallHanger
+  - MCGrindstone
   layers:
   - Default
   - TransparentFX
@@ -56,9 +64,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: UI
-    uniqueID: 2338746077
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

@@ -1,0 +1,67 @@
+{
+	"story_line": [
+		{
+			"id": 0,
+			"text": "Smithy's story begins.",
+			"child": [1]
+		},
+		{
+			"id": 1,
+			"text": "The first customer enters the shop.",
+			"child": [2]
+		},
+		{
+			"id": 2,
+			"text": "I've received a sudden request.",
+			"child": [3, 4, 5]
+		},
+		{
+			"id": 3,
+			"text": "...",
+			"child": [6],
+			"choice": 1,
+			"choicePick": true
+		},
+		{
+			"id": 4,
+			"text": "I've got work to do, be brief.",
+			"child": [7],
+			"choice": 2,
+			"choicePick": true
+		},
+		{
+			"id": 5,
+			"text": "No issue, I'm here to help.",
+			"child": [8],
+			"choice": 3,
+			"choicePick": true
+		},
+		{
+			"id": 6,
+			"text": "You are going to receive your part, so help me out.",
+			"child": [3, 4, 5],
+			"choice": 1,
+			"choicePick": false
+		},
+		{
+			"id": 7,
+			"text": "Exatcly how a smithy should be. I would like to order a sword.",
+			"child": [9],
+			"choice": 1,
+			"choicePick": false
+		},
+		{
+			"id": 8,
+			"text": "Perfect. Then I am going to order the strongest sword that you can make.",
+			"child": [9],
+			"choice": 1,
+			"choicePick": false
+		},
+		{
+			"id": 9,
+			"text": "Understood. I will start the work and get back to you once the sword is ready.",
+			"exitRoom": true,
+			"child": [-1]
+		}
+	]
+}
